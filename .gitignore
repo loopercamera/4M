@@ -1,3 +1,6 @@
 
 01_ETL/01_opendata.swiss/opendata_swiss_datasets.csv
 01_ETL/01_opendata.swiss/opendata_swiss_datasets.json
+/.vscode
+01_ETL/01_opendata.swiss/merged_metadata.csv
+01_ETL/01_opendata.swiss/resources_metadata.csv
