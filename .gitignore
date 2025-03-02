@@ -4,3 +4,4 @@
 /.vscode
 01_ETL/01_opendata.swiss/merged_metadata.csv
 01_ETL/01_opendata.swiss/resources_metadata.csv
+01_ETL/02_geocat.ch/geocat_datasets.csv
