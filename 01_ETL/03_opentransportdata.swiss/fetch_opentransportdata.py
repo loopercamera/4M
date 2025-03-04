@@ -2,8 +2,13 @@ import requests
 import csv
 import time
 
+# Function to load the API token from file
+def load_api_token():
+    with open("01_ETL/03_opentransportdata.swiss/token_ckan_opentransportdata.txt", "r") as file:
+        return file.read().strip()
+
 # API token and base URL
-api_token = "eyJvcmciOiI2NDA2NTFhNTIyZmEwNTAwMDEyOWJiZTEiLCJpZCI6IjlhOWFhMmVjYzNlMDQ0ZGM4NmY0NzQ0OGFlMWYwMmUxIiwiaCI6Im11cm11cjEyOCJ9"
+api_token = load_api_token()
 base_url = "https://api.opentransportdata.swiss/ckan-api/"
 
 # request-header
