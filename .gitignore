@@ -7,3 +7,4 @@
 01_ETL/02_geocat.ch/geocat_datasets.csv
 01_ETL/03_opentransportdata.swiss/dataset_metadata.csv
 01_ETL/03_opentransportdata.swiss/token_ckan_opentransportdata.txt
+01_ETL/03_opentransportdata.swiss/json_files

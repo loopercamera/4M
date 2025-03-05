@@ -55,7 +55,7 @@ for i in range(0, len(dataset_list), batch_size):
 csv_filename = "01_ETL/03_opentransportdata.swiss/dataset_metadata.csv"
 
 with open(csv_filename, mode="w", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file)
+    writer = csv.writer(file, delimiter=";")
     
     # Write the column headers dynamically based on all the found metadata fields
     all_keys = sorted(all_keys)  # Sort for better readability
