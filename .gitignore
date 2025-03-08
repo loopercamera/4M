@@ -8,3 +8,11 @@
 01_ETL/03_opentransportdata.swiss/dataset_metadata.csv
 01_ETL/03_opentransportdata.swiss/token_ckan_opentransportdata.txt
 01_ETL/03_opentransportdata.swiss/json_files
+
+
+01_ETL/02_geocat.ch/geocat_full_metadata.xml
+/veiw_temp
+/01_ETL/01_opendata.swiss/saved_metadata_xml
+01_ETL/01_opendata.swiss/contact_point_metadata.csv
+01_ETL/01_opendata.swiss/datasets_metadata.csv
+01_ETL/01_opendata.swiss/distribution_metadata.csv
