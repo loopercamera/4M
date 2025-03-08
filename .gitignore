@@ -5,3 +5,9 @@
 01_ETL/01_opendata.swiss/merged_metadata.csv
 01_ETL/01_opendata.swiss/resources_metadata.csv
 01_ETL/02_geocat.ch/geocat_datasets.csv
+01_ETL/02_geocat.ch/geocat_full_metadata.xml
+/veiw_temp
+/01_ETL/01_opendata.swiss/saved_metadata_xml
+01_ETL/01_opendata.swiss/contact_point_metadata.csv
+01_ETL/01_opendata.swiss/datasets_metadata.csv
+01_ETL/01_opendata.swiss/distribution_metadata.csv

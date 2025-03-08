@@ -34,7 +34,7 @@ def save_datasets(json_file="01_ETL/01_opendata.swiss/opendata_swiss_datasets.js
         # Write to a CSV file
         with open(csv_file, "w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
-            writer.writerow(["Dataset Name"])  # Write the header
+            writer.writerow(["Dataset_Name"])  # Write the header
             for dataset in datasets:
                 writer.writerow([dataset])
 
