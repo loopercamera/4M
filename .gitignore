@@ -16,3 +16,4 @@
 01_ETL/01_opendata.swiss/contact_point_metadata.csv
 01_ETL/01_opendata.swiss/datasets_metadata.csv
 01_ETL/01_opendata.swiss/distribution_metadata.csv
+/01_ETL/02_geocat.ch/saved_metadata_xml
