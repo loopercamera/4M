@@ -21,3 +21,5 @@
 
 #02_NLP
 02_NLP/01_Fasttext/data
+02_NLP/02_BERT/data
+02_NLP/03_Gensim_Fasttext/data
