@@ -1,0 +1,357 @@
+{
+    "accrual_periodicity": "freq:daily",
+    "author": "INFO+ und BehiG-Bestandsaufnahme",
+    "author_email": null,
+    "contact_points": [
+        {
+            "email": "behig.ski@sbb.ch",
+            "name": "SKI Fachstelle BehiG"
+        }
+    ],
+    "coverage": "90%",
+    "creator_user_id": "c1999a15-85a1-4b20-8a77-9967b7d373ed",
+    "description": {
+        "de": "Dieser Datensatz enthält Informationen über die Rollstuhlzugänglichkeit pro Haltestelle und Haltekante, auf Basis der Fahrplandaten aus INFO+ und der BehiG-Bestandsaufnahme. Ausserdem enthalten ist die Zugänglichkeit für eine kleine Menge von Fahrzeugen, inklusive einer Erklärung wie diese bewertet wurden.\r\n\r\nDie Daten sind die Basis für barrierefreies Reisen (BfR) und vereinfachen die Berechnung von Rollstuhlsymbolen, entsprechend der in Richtlinie V580 (Produkt 02) geforderten Granularität.\r\n\r\nAchtung:\r\nAb 06. Dezember 2024 werden die Rollstuhlzugänglichkeiten von Haltestellen oder Haltekanten in der Datei BfR_Haltestellendaten.csv mit Gültigkeiten versehen. Das heisst, jeder Eintrag enthält zusätzlich die zwei Spalten \"gültigVon\" und \"gültigBis\", welche festlegen, wie lange die fragliche Zugänglichkeit gültig ist. Dies bedeutet auch, dass für eine bestimmte Haltestelle oder Haltekante mehrere Einträge vorhanden sein können mit unterschiedlichen Zugänglichkeiten und Gültigkeiten. Ein Beispiel soll dies veranschaulichen, wobei der Einfachheit halber nicht alle Spalten aufgeführt werden:\r\nDIDOK      Name             sg_Autonomie  ug_Ersatztransport   sloid     gültigVon   gültigBis\r\n8503059    Zürich Stadelhofen, Bahnhof   1     0     ch:1:sloid:3059::1      18.11.2024  15.12.2024\r\n8503059    Zürich Stadelhofen, Bahnhof   0     1     ch:1:sloid:3059::1      16.12.2024  14.05.2025\r\n\r\nIn diesem konstruierten Beispiel ist die Haltekante mit SwissLocationId \"ch:1:sloid:3059::1\" bis 15. Dezember autonom zugänglich, aber aufgrund einer Baustelle ab dem 16. Dezember für Fahrgäste im Rollstuhl nur noch mittels Ersatz-Shuttle erreichbar.\r\n",
+        "en": "This dataset contains information on wheelchair accessibility per stop place and boarding area, based on the timetable data from INFO+ and the \"BehiG\" inventorization. Also included is the accessibility for a small number of vehicles, including an explanation of how these were assessed.\r\n\r\nThe data is the basis for barrier-free travel (BfR) and simplifies the calculation of wheelchair symbols in accordance with the granularity required in Directive V580 (Product 02).\r\n\r\nAttention:\r\nFrom December 6th 2024 on, the wheelchair accessibility of stop places or boarding areas (Haltekanten) has been provided with validities in the BfR_Haltestellendaten.csv file. This means that each entry also contains the two columns \"gültigVon\" and \"gültigBis\", which define how long the accessibility in question is valid. This also means that there may be several entries with different accessibility and validity for a particular stop place or boarding area. An example is provided to illustrate this, whereby not all columns are listed for the sake of simplicity:\r\nDIDOK      Name             sg_Autonomie  ug_Ersatztransport   sloid     gültigVon   gültigBis\r\n8503059    Zürich Stadelhofen, Bahnhof   1     0     ch:1:sloid:3059::1      18.11.2024  15.12.2024\r\n8503059    Zürich Stadelhofen, Bahnhof   0     1     ch:1:sloid:3059::1      16.12.2024  14.05.2025\r\n\r\nIn this constructed example, the boarding area with SwissLocationId \"ch:1:sloid:3059::1\" is autonomously accessible until 15 December, but due to a construction site, passengers in wheelchairs will only be able to reach it by replacement shuttle from 16 December.",
+        "fr": "Ce jeu de données contient des informations sur l'accessibilité en fauteuil roulant par arrêt et par bordure d'arrêt, sur la base des données d'horaires issues d'INFO+ et de l'état des lieux de la LHand (LMETA). Il comprend également l'accessibilité pour un petit nombre de véhicules, ainsi qu'une explication sur la manière dont ils ont été évalués.\r\n\r\nLes données sont la base d'un voyage sans obstacles (BfR) et simplifient le calcul des symboles de fauteuils roulants, conformément à la granularité exigée par la directive V580 (produit 02).\r\n\r\nAttention: \r\nDès décembre 6 2024, l'accessibilité en fauteuil roulant des arrêts ou des bordures d'arrêt est validée dans le fichier BfR_Haltestellendaten.csv. Cela signifie que chaque entrée contient en plus les deux colonnes \"gültigVon\" et \"gültigBis\", qui déterminent la durée de validité de l'accessibilité en question. Cela signifie également que pour un arrêt ou une bordure d'arrêt donné, il peut y avoir plusieurs entrées avec des accessibilités et des validités différentes. Un exemple permet d'illustrer ce point, mais pour des raisons de simplicité, toutes les colonnes ne sont pas mentionnées :\r\nDIDOK      Name             sg_Autonomie  ug_Ersatztransport   sloid     gültigVon   gültigBis\r\n8503059    Zürich Stadelhofen, Bahnhof   1     0     ch:1:sloid:3059::1      18.11.2024  15.12.2024\r\n8503059    Zürich Stadelhofen, Bahnhof   0     1     ch:1:sloid:3059::1      16.12.2024  14.05.2025\r\n\r\n\r\nDans cet exemple construit, la bordure d'arrêt avec SwissLocationId \"ch:1:sloid:3059::1\" est accessible de manière autonome jusqu'au 15 décembre, mais en raison d'un chantier, les passagers en fauteuil roulant ne pourront y accéder qu'au moyen d'une navette de remplacement à partir du 16 décembre.",
+        "it": "Questo set di dati contiene informazioni sull'accessibilità delle sedie a rotelle per fermata e bordo fermata, basate sui dati degli orari di INFO+ e sull'inventario LMeCA. È inclusa anche l'accessibilità di un piccolo numero di veicoli, con una spiegazione di come sono stati valutati.\r\n\r\nI dati sono la base per gli spostamenti senza barriere (BfR) e semplificano il calcolo dei simboli delle sedie a rotelle secondo la granularità richiesta dalla direttiva V580 (Prodotto 02).\r\n\r\nAttenzione: \r\nDa dicembre 6 2024, l'accessibilità alle sedie a rotelle delle fermate o dei bordi fermata è stata fornita con validità nel file BfR_Haltestellendaten.csv. Ciò significa che ogni voce contiene anche le due colonne \"gültigVon\" e \"gültigBis\", che definiscono la durata della validità dell'accessibilità in questione. Ciò significa anche che possono esistere più voci con accessibilità e validità diverse per un determinato stop o bordo fermata. Per illustrare questo aspetto, viene fornito un esempio in cui, per semplicità, non sono elencate tutte le colonne:\r\nDIDOK      Name             sg_Autonomie  ug_Ersatztransport   sloid     gültigVon   gültigBis\r\n8503059    Zürich Stadelhofen, Bahnhof   1     0     ch:1:sloid:3059::1      18.11.2024  15.12.2024\r\n8503059    Zürich Stadelhofen, Bahnhof   0     1     ch:1:sloid:3059::1      16.12.2024  14.05.2025\r\n\r\nIn questo esempio costruito, il bordo fermata con SwissLocationId \"ch:1:sloid:3059::1\" è accessibile autonomamente fino al 15 dicembre, ma a causa di un cantiere, i passeggeri in sedia a rotelle potranno raggiungerla con una navetta sostitutiva solo dal 16 dicembre.\r\n"
+    },
+    "id": "8456c028-4d73-4f2e-8127-9ce8ec889c9d",
+    "identifier": "bfr-rollstuhl",
+    "isopen": false,
+    "keywords": {
+        "de": [
+            "behig",
+            "rollstuhlzuganglichkeit",
+            "proprietar",
+            "daten",
+            "haltestelle",
+            "haltekante",
+            "verkehrsmittel",
+            "zug",
+            "bus",
+            "rollstuhlfahrer",
+            "passagier"
+        ],
+        "fr": [
+            "lhand",
+            "accessibilite",
+            "proprietaire",
+            "donnees",
+            "accessibilite-des-fauteuils-roulants",
+            "bordure-d-arret",
+            "halte",
+            "train",
+            "autobus",
+            "passager",
+            "personne-en-fauteuil-roulant",
+            "moyen-de-transport"
+        ],
+        "it": [
+            "ldis",
+            "accessibilita",
+            "proprietario",
+            "dati",
+            "accessibilita-alle-sedie-a-rotelle",
+            "bordo-di-fermata",
+            "fermata",
+            "treno",
+            "autobus",
+            "persone-in-sedia-a-rotelle",
+            "mezzo-di-trasporto"
+        ],
+        "en": [
+            "accessibility",
+            "proprietary",
+            "data",
+            "wheelchair-accessibility",
+            "stop-place",
+            "stop",
+            "train",
+            "bus",
+            "wheelchair-user",
+            "mode-of-transportation"
+        ]
+    },
+    "language": [
+        "de"
+    ],
+    "license_id": null,
+    "license_title": null,
+    "maintainer": "SKI Fachstelle BehiG",
+    "maintainer_email": "behig.ski@sbb.ch",
+    "metadata_created": "2023-06-15T13:01:51.704407+02:00",
+    "metadata_modified": "2025-03-05T04:22:20.893937+01:00",
+    "modified": "2025-03-05T04:20:51.403405+01:00",
+    "name": "bfr-rollstuhl",
+    "num_resources": 3,
+    "num_tags": 0,
+    "odpch_license_name": "",
+    "odpch_license_url": "",
+    "organization": {
+        "id": "88675f86-c1bf-4d1d-b0fb-e46825c74885",
+        "name": "oevch",
+        "title": {
+            "de": "Geschäftsstelle SKI",
+            "en": "Business office SKI",
+            "fr": "Secrétariat des tâches  SKI",
+            "it": "Servizio commerciale Attività SKI"
+        },
+        "type": "organization",
+        "description": {
+            "de": "Die Geschäftsstelle Systemaufgaben Kundeninformation (SKI) veröffentlicht im Auftrag des BAV die Daten des gesamten öffentlichen Verkehrs der Schweiz",
+            "en": "Working on behalf of the Swiss Federal Office of Transport (FOT), the Customer Information System Tasks (SKI) business office publishes data on all public transport in Switzerland",
+            "fr": "Le Secrétariat des tâches du système d’information à la clientèle (SKI) publie pour le compte de l’OFT les données de l’ensemble des transports publics de Suisse.",
+            "it": "Il servizio commerciale Attività di sistema Informazione alla clientela (SKI) pubblica, per conto dell’UFT, i dati di tutto il trasporto pubblico in Svizzera."
+        },
+        "image_url": "2025-01-20-114818.145735SKILogoRGB.jpg",
+        "created": "2016-11-08T12:31:10.415523",
+        "is_organization": true,
+        "approval_status": "approved",
+        "state": "active"
+    },
+    "owner_org": "88675f86-c1bf-4d1d-b0fb-e46825c74885",
+    "permalink": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/9aed1fd3-f335-4247-8080-7b47d5251e3c/download/bfr_kombinationslogik.csv",
+    "private": false,
+    "publishers": [
+        {
+            "label": "INFO+ und BehiG-Bestandsaufnahme"
+        }
+    ],
+    "relations": [
+        {
+            "label": "Übersicht Barrierefreiheit",
+            "url": "https://www.öv-info.ch/de/datenmanagement/barrierefreier-zugang/behindertengleichstellung-im-oeffentlichen-verkehr"
+        },
+        {
+            "label": "Barrierefreiheit in der Fahrplanauskunft",
+            "url": "https://www.öv-info.ch/de/datenmanagement/barrierefreier-zugang/barrierefreiheit-der-fahrplanauskunft"
+        }
+    ],
+    "spatial": "Schweiz",
+    "state": "active",
+    "temporals": [],
+    "title": {
+        "de": "Barrierefreies Reisen - Rollstuhlzugänglichkeit",
+        "en": "Accessible travel - Wheelchair accessibility",
+        "fr": "En route sans barrières - Accessibilité des fauteuils roulants",
+        "it": "In viaggio senza barriere - Accessibilità alle sedie a rotelle"
+    },
+    "type": "dataset",
+    "version": null,
+    "extras": [
+        {
+            "key": "harvest_object_id",
+            "value": "826de635-ff15-4e89-82e5-1c928edaf358"
+        },
+        {
+            "key": "harvest_source_id",
+            "value": "2126ac0a-cc8e-474c-aa74-d349f40c8328"
+        },
+        {
+            "key": "harvest_source_title",
+            "value": "BfR Rollstuhlzugänglichkeit"
+        }
+    ],
+    "groups": [
+        {
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "display_name": {
+                "fr": "Données de base des Services ",
+                "de": "Dienststellen-Stammdaten",
+                "en": "Service Points Master Data",
+                "it": "Dati di base dei Servizi"
+            },
+            "id": "fa8e7f8c-d54a-4373-a3bb-1c47760a1ae7",
+            "image_display_url": "",
+            "name": "didok-group",
+            "title": {
+                "fr": "Données de base des Services ",
+                "de": "Dienststellen-Stammdaten",
+                "en": "Service Points Master Data",
+                "it": "Dati di base dei Servizi"
+            }
+        }
+    ],
+    "resources": [
+        {
+            "byte_size": 778,
+            "cache_last_updated": null,
+            "cache_url": null,
+            "ckan_url": "https://data.opentransportdata.swiss",
+            "coverage": "Coverage",
+            "created": "2025-03-05T04:20:49.826776+01:00",
+            "datastore_active": true,
+            "datastore_contains_all_records_of_source_file": true,
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "format": "CSV",
+            "hash": "0fb98cbeec0c86a5e73ede60938101b7",
+            "id": "9aed1fd3-f335-4247-8080-7b47d5251e3c",
+            "identifier": "BfR_Kombinationslogik.csv",
+            "ignore_hash": false,
+            "issued": "2025-03-05T04:20:49.739239+01:00",
+            "language": [],
+            "last_modified": "2025-03-05T04:20:49.781621+01:00",
+            "license": "",
+            "media_type": "text/csv",
+            "metadata_modified": "2025-03-05T04:22:20.904995+01:00",
+            "mimetype": "text/csv",
+            "modified": "2025-03-05T04:20:49.739239+01:00",
+            "name": {
+                "de": "BfR_Kombinationslogik.csv",
+                "en": "BfR_Kombinationslogik.csv",
+                "fr": "BfR_Kombinationslogik.csv",
+                "it": "BfR_Kombinationslogik.csv"
+            },
+            "original_url": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/9aed1fd3-f335-4247-8080-7b47d5251e3c/download/bfr_kombinationslogik.csv",
+            "package_id": "8456c028-4d73-4f2e-8127-9ce8ec889c9d",
+            "position": 0,
+            "relations": "[]",
+            "resource_id": "9aed1fd3-f335-4247-8080-7b47d5251e3c",
+            "resource_type": null,
+            "rights": "http://odpch-web.begasoft.ch/de/terms-of-use/",
+            "set_url_type": false,
+            "size": 778,
+            "state": "active",
+            "task_created": "2025-03-05 03:20:50.382647",
+            "title": {
+                "de": "BfR_Kombinationslogik.csv",
+                "en": "BfR_Kombinationslogik.csv",
+                "fr": "BfR_Kombinationslogik.csv",
+                "it": "BfR_Kombinationslogik.csv"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/9aed1fd3-f335-4247-8080-7b47d5251e3c/download/bfr_kombinationslogik.csv",
+            "url_type": "upload",
+            "version": "2025-03-05T04:20:49.739239+01:00"
+        },
+        {
+            "byte_size": 7337713,
+            "cache_last_updated": null,
+            "cache_url": null,
+            "ckan_url": "https://data.opentransportdata.swiss",
+            "coverage": "Coverage",
+            "created": "2025-03-05T04:20:44.179832+01:00",
+            "datastore_active": true,
+            "datastore_contains_all_records_of_source_file": true,
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "format": "CSV",
+            "hash": "1e107f9f779bba98cd09582825e020ab",
+            "id": "ae05f8fa-6753-49db-9230-0c9ce7a43ba0",
+            "identifier": "BfR_Haltestellendaten.csv",
+            "ignore_hash": false,
+            "issued": "2025-03-05T04:20:44.080851+01:00",
+            "language": [],
+            "last_modified": "2025-03-05T04:20:44.132891+01:00",
+            "license": "",
+            "media_type": "text/csv",
+            "metadata_modified": "2025-03-05T04:22:17.706034+01:00",
+            "mimetype": "text/csv",
+            "modified": "2025-03-05T04:20:44.080851+01:00",
+            "name": {
+                "de": "BfR_Haltestellendaten.csv",
+                "en": "BfR_Haltestellendaten.csv",
+                "fr": "BfR_Haltestellendaten.csv",
+                "it": "BfR_Haltestellendaten.csv"
+            },
+            "original_url": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/ae05f8fa-6753-49db-9230-0c9ce7a43ba0/download/bfr_haltestellendaten.csv",
+            "package_id": "8456c028-4d73-4f2e-8127-9ce8ec889c9d",
+            "position": 1,
+            "relations": "[]",
+            "resource_id": "ae05f8fa-6753-49db-9230-0c9ce7a43ba0",
+            "resource_type": null,
+            "rights": "http://odpch-web.begasoft.ch/de/terms-of-use/",
+            "set_url_type": false,
+            "size": 7337713,
+            "state": "active",
+            "task_created": "2025-03-05 03:20:45.014609",
+            "title": {
+                "de": "BfR_Haltestellendaten.csv",
+                "en": "BfR_Haltestellendaten.csv",
+                "fr": "BfR_Haltestellendaten.csv",
+                "it": "BfR_Haltestellendaten.csv"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/ae05f8fa-6753-49db-9230-0c9ce7a43ba0/download/bfr_haltestellendaten.csv",
+            "url_type": "upload",
+            "version": "2025-03-05T04:20:44.080851+01:00"
+        },
+        {
+            "byte_size": 67933,
+            "cache_last_updated": null,
+            "cache_url": null,
+            "ckan_url": "https://data.opentransportdata.swiss",
+            "coverage": "Switzerland",
+            "created": "2025-03-05T04:20:15.661875+01:00",
+            "datastore_active": true,
+            "datastore_contains_all_records_of_source_file": true,
+            "description": {
+                "de": "",
+                "en": "",
+                "fr": "",
+                "it": ""
+            },
+            "format": "CSV",
+            "hash": "c5a2541535af70c16074d3daf5847372",
+            "id": "c3fe0737-763e-49c3-ab2b-9a8766cc68f7",
+            "identifier": "BfR_Fahrzeugmapping.csv",
+            "ignore_hash": false,
+            "issued": "2025-03-05T04:20:15.550814+01:00",
+            "language": [],
+            "last_modified": "2025-03-05T04:20:15.597767+01:00",
+            "license": "",
+            "media_type": "text/csv",
+            "metadata_modified": "2025-03-05T04:20:20.833033+01:00",
+            "mimetype": "text/csv",
+            "modified": "2025-03-05T04:20:15.550814+01:00",
+            "name": {
+                "de": "BfR_Fahrzeugmapping.csv",
+                "en": "BfR_Fahrzeugmapping.csv",
+                "fr": "BfR_Fahrzeugmapping.csv",
+                "it": "BfR_Fahrzeugmapping.csv"
+            },
+            "original_url": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/c3fe0737-763e-49c3-ab2b-9a8766cc68f7/download/bfr_fahrzeugmapping.csv",
+            "package_id": "8456c028-4d73-4f2e-8127-9ce8ec889c9d",
+            "position": 2,
+            "relations": "[]",
+            "resource_id": "c3fe0737-763e-49c3-ab2b-9a8766cc68f7",
+            "resource_type": null,
+            "rights": "http://odpch-web.begasoft.ch/de/terms-of-use/",
+            "set_url_type": false,
+            "size": 67933,
+            "state": "active",
+            "task_created": "2025-03-05 03:20:16.343738",
+            "title": {
+                "de": "BfR_Fahrzeugmapping.csv",
+                "en": "BfR_Fahrzeugmapping.csv",
+                "fr": "BfR_Fahrzeugmapping.csv",
+                "it": "BfR_Fahrzeugmapping.csv"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/8456c028-4d73-4f2e-8127-9ce8ec889c9d/resource/c3fe0737-763e-49c3-ab2b-9a8766cc68f7/download/bfr_fahrzeugmapping.csv",
+            "url_type": "upload",
+            "version": "2025-03-05T04:20:15.550814+01:00"
+        }
+    ],
+    "tags": [],
+    "relationships_as_subject": [],
+    "relationships_as_object": [],
+    "display_name": {
+        "de": "Barrierefreies Reisen - Rollstuhlzugänglichkeit",
+        "en": "Accessible travel - Wheelchair accessibility",
+        "fr": "En route sans barrières - Accessibilité des fauteuils roulants",
+        "it": "In viaggio senza barriere - Accessibilità alle sedie a rotelle"
+    }
+}

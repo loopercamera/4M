@@ -1,0 +1,233 @@
+{
+    "accrual_periodicity": "freq:yearly",
+    "author": "Konzernstatistik SBB",
+    "author_email": null,
+    "contact_points": [
+        {
+            "email": "opendata@sbb.ch",
+            "name": "Open Data Mobilität Schweiz"
+        }
+    ],
+    "coverage": "100%",
+    "creator_user_id": "b7e5a20b-2ddb-4d03-88f6-74f03938ce0f",
+    "description": {
+        "de": "Anzahl Einsteigende und Aussteigende an den Bahnhöfen und Haltestellen.",
+        "en": "Passengers boarding and alighting at stations and stops.",
+        "fr": "Personnes montant et descendant des trains dans les gares et les haltes.",
+        "it": "Persone che salgono e scendono dal treno nelle stazioni e fermate."
+    },
+    "id": "02569ba8-b029-4d75-ad59-a6ffd4b6b569",
+    "identifier": "Ein- und Aussteiger",
+    "isopen": false,
+    "issued": "",
+    "keywords": {
+        "de": [
+            "proprietar",
+            "embag",
+            "daten",
+            "ein--und-ausstieg",
+            "passagierfrequenz",
+            "einsteigende",
+            "aussteigende",
+            "ohne-beforderungsleistung",
+            "analyst"
+        ],
+        "fr": [
+            "proprietaire",
+            "lmeta",
+            "donnees",
+            "entree-et-sortie",
+            "affluence-des-voyageurs",
+            "entrants",
+            "sortants",
+            "sans-prestation-de-transport",
+            "analyste"
+        ],
+        "it": [
+            "proprietario",
+            "lmeca",
+            "dati",
+            "entrata-e-uscita",
+            "frequenza-dei-viaggiatori",
+            "imbarco",
+            "sbarco",
+            "senza-servizio-di-transporto",
+            "analista"
+        ],
+        "en": [
+            "proprietary",
+            "data",
+            "boarding-and-alighting",
+            "passanger-frequency",
+            "boarding",
+            "alighting",
+            "passenger-frequency",
+            "without-transport-service",
+            "analyst"
+        ]
+    },
+    "language": [
+        "en",
+        "de",
+        "fr",
+        "it"
+    ],
+    "license_id": null,
+    "license_title": null,
+    "maintainer": "Open Data Mobilität Schweiz",
+    "maintainer_email": "opendata@sbb.ch",
+    "metadata_created": "2019-09-30T16:37:29.776721+02:00",
+    "metadata_modified": "2024-08-29T12:18:04.442434+02:00",
+    "modified": "2024-06-19T11:47:42.423437+02:00",
+    "name": "einundaus",
+    "num_resources": 1,
+    "num_tags": 0,
+    "odpch_license_name": "",
+    "odpch_license_url": "",
+    "organization": {
+        "id": "88675f86-c1bf-4d1d-b0fb-e46825c74885",
+        "name": "oevch",
+        "title": {
+            "de": "Geschäftsstelle SKI",
+            "en": "Business office SKI",
+            "fr": "Secrétariat des tâches  SKI",
+            "it": "Servizio commerciale Attività SKI"
+        },
+        "type": "organization",
+        "description": {
+            "de": "Die Geschäftsstelle Systemaufgaben Kundeninformation (SKI) veröffentlicht im Auftrag des BAV die Daten des gesamten öffentlichen Verkehrs der Schweiz",
+            "en": "Working on behalf of the Swiss Federal Office of Transport (FOT), the Customer Information System Tasks (SKI) business office publishes data on all public transport in Switzerland",
+            "fr": "Le Secrétariat des tâches du système d’information à la clientèle (SKI) publie pour le compte de l’OFT les données de l’ensemble des transports publics de Suisse.",
+            "it": "Il servizio commerciale Attività di sistema Informazione alla clientela (SKI) pubblica, per conto dell’UFT, i dati di tutto il trasporto pubblico in Svizzera."
+        },
+        "image_url": "2025-01-20-114818.145735SKILogoRGB.jpg",
+        "created": "2016-11-08T12:31:10.415523",
+        "is_organization": true,
+        "approval_status": "approved",
+        "state": "active"
+    },
+    "owner_org": "88675f86-c1bf-4d1d-b0fb-e46825c74885",
+    "permalink": "https://opentransportdata.swiss/dataset/02569ba8-b029-4d75-ad59-a6ffd4b6b569/resource/eda7fdb0-d36f-40dc-b38f-c88d1e72f56f/download/t01x-sbb-cff-ffs-frequentia-2023.xlsx",
+    "private": false,
+    "publishers": [
+        {
+            "label": "Konzernstatistik SBB"
+        }
+    ],
+    "relations": [
+        {
+            "label": "Cookbook",
+            "url": "https://opentransportdata.swiss/de/ein-und-aussteigende/"
+        }
+    ],
+    "spatial": "Schweiz",
+    "state": "active",
+    "temporals": [],
+    "title": {
+        "de": "Anzahl Einsteigende und Aussteigende",
+        "en": "Number of passengers boarding and alighting",
+        "fr": "Nombre d'entrants et de sortants",
+        "it": "Numero di passeggeri che salgono e scendono"
+    },
+    "type": "dataset",
+    "version": null,
+    "groups": [
+        {
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "display_name": {
+                "fr": "Autres données sur la mobilité",
+                "de": "Weitere Mobilitätsdaten",
+                "en": "Further mobility data",
+                "it": "Ulteriori dati sulla mobilità"
+            },
+            "id": "41215fb4-5e59-4f7c-b31c-41346ed2913d",
+            "image_display_url": "",
+            "name": "miscellaneous-group",
+            "title": {
+                "fr": "Autres données sur la mobilité",
+                "de": "Weitere Mobilitätsdaten",
+                "en": "Further mobility data",
+                "it": "Ulteriori dati sulla mobilità"
+            }
+        }
+    ],
+    "resources": [
+        {
+            "cache_last_updated": null,
+            "cache_url": null,
+            "coverage": "Coverage",
+            "created": "2024-06-19T09:47:41.829103+02:00",
+            "datastore_active": false,
+            "datastore_contains_all_records_of_source_file": false,
+            "description": {
+                "de": "Ein- und Aussteigende an den Bahnhöfen und Haltestellen",
+                "en": "Entrants and dropouts at the stations and stops",
+                "fr": "Entrants et décrocheurs aux gares et arrêts",
+                "it": "Partecipanti e abbandoni nelle stazioni e fermate"
+            },
+            "download_url": "",
+            "format": "XLSX",
+            "hash": "",
+            "id": "eda7fdb0-d36f-40dc-b38f-c88d1e72f56f",
+            "identifier": "t01x-sbb-cff-ffs-frequentia-2023.xlsx",
+            "issued": "2024-06-19T09:47:41.747934+02:00",
+            "language": [],
+            "last_modified": "2024-06-19T09:47:41.785765+02:00",
+            "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "metadata_modified": "2024-07-11T15:39:40.520400+02:00",
+            "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "modified": "2024-06-19T09:47:41.747934+02:00",
+            "name": {
+                "de": "Anzahl Einsteigende und Aussteigende",
+                "en": "Number of passengers boarding and alighting",
+                "fr": "Nombre d'entrants et de sortants",
+                "it": "Numero di passeggeri che salgono e scendono"
+            },
+            "name-de": "Anzahl Einsteigende und Aussteigende",
+            "name-en": "Number of passengers boarding and alighting",
+            "name-fr": "Nombre d'entrants et de sortants",
+            "name-it": "Numero di passeggeri che salgono e scendono",
+            "package_id": "02569ba8-b029-4d75-ad59-a6ffd4b6b569",
+            "position": 0,
+            "resource_type": null,
+            "size": 276620,
+            "state": "active",
+            "title": {
+                "de": "Anzahl Einsteigende und Aussteigende",
+                "en": "Number of passengers boarding and alighting",
+                "fr": "Nombre d'entrants et de sortants",
+                "it": "Numero di passeggeri che salgono e scendono"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/02569ba8-b029-4d75-ad59-a6ffd4b6b569/resource/eda7fdb0-d36f-40dc-b38f-c88d1e72f56f/download/t01x-sbb-cff-ffs-frequentia-2023.xlsx",
+            "url_type": "upload"
+        }
+    ],
+    "tags": [],
+    "relationships_as_subject": [],
+    "relationships_as_object": [],
+    "display_name": {
+        "de": "Anzahl Einsteigende und Aussteigende",
+        "en": "Number of passengers boarding and alighting",
+        "fr": "Nombre d'entrants et de sortants",
+        "it": "Numero di passeggeri che salgono e scendono"
+    },
+    "extras": [
+        {
+            "key": "harvest_object_id",
+            "value": "95998462-dd80-4687-aca1-4458fe22c7e8"
+        },
+        {
+            "key": "harvest_source_id",
+            "value": "fb500c7b-362f-42e6-8c0b-488e5ad8aa1e"
+        },
+        {
+            "key": "harvest_source_title",
+            "value": "SBBStat_Ein-Aussteigende"
+        }
+    ]
+}

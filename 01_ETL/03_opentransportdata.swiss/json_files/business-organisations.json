@@ -1,0 +1,361 @@
+{
+    "accrual_periodicity": "freq:irregular",
+    "author": "Bundesamt für Verkehr (BAV) via ATLAS",
+    "author_email": null,
+    "contact_points": [
+        {
+            "email": "atlas@sbb.ch",
+            "name": "Fachstelle atlas"
+        }
+    ],
+    "coverage": "100%",
+    "creator_user_id": "c717c50c-d108-4274-a0f2-154560182efc",
+    "description": {
+        "de": "Die Geschäftsorganisationen stellen eine organisatorische Strukturierung der Transportunternehmen nach abrechnungstechnischen und kundeninformativen Merkmalen dar.\r\n\r\nDie Geschäftsorganisationen werden über ihre Swiss Business Organisation ID (SBOID) identifiziert. Der Datensatz enthält zudem die Swiss Administration ID (SAID), welche Teil der SBOID ist, und für definierte Anwendungsfälle (z.B. Swiss Journey ID) genutzt werden kann.\r\n\r\nDer Datensatz enthält: Die Daten von Heute (Ist), Fahrplanwechsel, und alle.",
+        "en": "The business organisations represent an organisational structuring of the transport companies according to billing and customer information characteristics.\r\n\r\nThe business organisations are identified by their Swiss Business Organisation ID (SBOID). The data set also contains the Swiss Administration ID (SAID), which is part of the SBOID and can be used for defined use cases (e.g. Swiss Journey ID).\r\n\r\nThe data set contains: The data from today (actual), timetable change, and all.",
+        "fr": "Les organisations commerciales représentent une structuration organisationnelle des entreprises de transport selon des caractéristiques de facturation et d'information des clients.\r\n\r\nLes organisations commerciales sont identifiées par leur Swiss Business Organisation ID (SBOID). L'ensemble de données contient en outre le Swiss Administration ID (SAID), qui fait partie du SBOID et peut être utilisé pour des cas d'application définis (p. ex. Swiss Journey ID).\r\n\r\nL'ensemble des données contient : les données d'aujourd'hui (réelles), les changements d'horaire et toutes les données.",
+        "it": "Le organizzazioni commerciali rappresentano una struttura organizzativa delle aziende di trasporto in base alle caratteristiche di fatturazione e di informazione dei clienti.\r\n\r\nLe organizzazioni commerciali sono identificate dal loro Swiss Business Organisation ID (SBOID). Il set di dati contiene anche lo Swiss Administration ID (SAID), che fa parte dello SBOID e può essere utilizzato per casi d'uso definiti (ad esempio, lo Swiss Journey ID).\r\n\r\nIl set di dati contiene: i dati di oggi (effettivi), il cambio di orario e tutti."
+    },
+    "id": "b8aedcd3-b49a-48f2-8975-6126b688d994",
+    "identifier": "Geschaeftsorganisationen",
+    "isopen": false,
+    "issued": "2023-12-16T14:18:42.341893+01:00",
+    "keywords": {
+        "de": [
+            "proprietar",
+            "embag",
+            "daten",
+            "geschaftsregister",
+            "swiss-business-organisation-id",
+            "swiss-administration-id",
+            "transportunternehmen",
+            "verkehrsunternehmen",
+            "geschaftsorganisation",
+            "on-demand-bus",
+            "zug",
+            "bus",
+            "mobilitatsdienstleister"
+        ],
+        "fr": [
+            "proprietaire",
+            "lmeta",
+            "donnees",
+            "registre-des-entreprises",
+            "id-de-la-organisation-commerciale-suisse",
+            "id-de-la-administration-suisse",
+            "operateur-de-transport",
+            "entreprise-de-transport",
+            "organisation-commerciale",
+            "bus-a-la-demande",
+            "train",
+            "autobus",
+            "prestataire-de-mobilite"
+        ],
+        "it": [
+            "proprietario",
+            "lmeca",
+            "registro-delle-imprese",
+            "id-organizzazione-aziendale-svizzera",
+            "id-amministrazione-svizzera",
+            "operatore-di-trasporto",
+            "azienda-di-trasporto",
+            "organizzazione-aziendale",
+            "autobus-a-richiesta",
+            "treno",
+            "autobus",
+            "fornitore-di-servizi-di-mobilita"
+        ],
+        "en": [
+            "proprietary",
+            "data",
+            "business-register",
+            "swiss-business-organisation-id",
+            "swiss-administration-id",
+            "transport-operator",
+            "transport-company",
+            "business-organisation",
+            "on-demand-bus",
+            "train",
+            "bus",
+            "mobility-service-provider"
+        ]
+    },
+    "language": [
+        "en",
+        "de",
+        "fr",
+        "it"
+    ],
+    "license_id": null,
+    "license_title": null,
+    "maintainer": "Fachstelle atlas",
+    "maintainer_email": "atlas@sbb.ch",
+    "metadata_created": "2023-12-16T14:18:42.501337+01:00",
+    "metadata_modified": "2025-03-05T03:15:15.831733+01:00",
+    "modified": "2025-03-05T03:15:15.551615+01:00",
+    "name": "business-organisations",
+    "num_resources": 3,
+    "num_tags": 0,
+    "odpch_license_name": "",
+    "odpch_license_url": "",
+    "organization": {
+        "id": "88675f86-c1bf-4d1d-b0fb-e46825c74885",
+        "name": "oevch",
+        "title": {
+            "de": "Geschäftsstelle SKI",
+            "en": "Business office SKI",
+            "fr": "Secrétariat des tâches  SKI",
+            "it": "Servizio commerciale Attività SKI"
+        },
+        "type": "organization",
+        "description": {
+            "de": "Die Geschäftsstelle Systemaufgaben Kundeninformation (SKI) veröffentlicht im Auftrag des BAV die Daten des gesamten öffentlichen Verkehrs der Schweiz",
+            "en": "Working on behalf of the Swiss Federal Office of Transport (FOT), the Customer Information System Tasks (SKI) business office publishes data on all public transport in Switzerland",
+            "fr": "Le Secrétariat des tâches du système d’information à la clientèle (SKI) publie pour le compte de l’OFT les données de l’ensemble des transports publics de Suisse.",
+            "it": "Il servizio commerciale Attività di sistema Informazione alla clientela (SKI) pubblica, per conto dell’UFT, i dati di tutto il trasporto pubblico in Svizzera."
+        },
+        "image_url": "2025-01-20-114818.145735SKILogoRGB.jpg",
+        "created": "2016-11-08T12:31:10.415523",
+        "is_organization": true,
+        "approval_status": "approved",
+        "state": "active"
+    },
+    "owner_org": "88675f86-c1bf-4d1d-b0fb-e46825c74885",
+    "permalink": "https://data.opentransportdata.swiss/dataset/b8aedcd3-b49a-48f2-8975-6126b688d994/resource/8c2e6fe5-9a14-4cde-9c0d-4d67fd14c509/download/actual_date_business_organisation_versions_2025-03-05.csv.zip",
+    "private": false,
+    "publishers": [
+        {
+            "label": "Bundesamt für Verkehr (BAV) via ATLAS"
+        }
+    ],
+    "relations": [
+        {
+            "label": "Cookbook",
+            "url": "https://opentransportdata.swiss/de/cookbook/business-organisations/"
+        },
+        {
+            "label": "Cookbook - Geschäftsorganisationen mit Echtzeitdaten",
+            "url": "https://opentransportdata.swiss/cookbook/go-realtime/"
+        },
+        {
+            "label": "Cookbook - Geschäftsorganisationen mit Ereignisdaten",
+            "url": "https://opentransportdata.swiss/de/cookbook/go-siri-sx"
+        }
+    ],
+    "spatial": "Schweiz",
+    "state": "active",
+    "temporals": [
+        {
+            "end_date": "9999-12-31T00:00:00",
+            "start_date": "2023-12-11T00:00:00"
+        }
+    ],
+    "title": {
+        "de": "Geschäftsorganisationen",
+        "en": "Business organisations",
+        "fr": "Organisations commerciales",
+        "it": "Organizzazioni aziendali"
+    },
+    "type": "dataset",
+    "version": null,
+    "extras": [
+        {
+            "key": "harvest_object_id",
+            "value": "20c93acc-5856-41d9-ac60-46bc76b55a22"
+        },
+        {
+            "key": "harvest_source_id",
+            "value": "0b6b53c9-2a58-4b7f-bed3-ab02578201a2"
+        },
+        {
+            "key": "harvest_source_title",
+            "value": "S3 Harvester GO"
+        }
+    ],
+    "groups": [
+        {
+            "description": {
+                "de": "",
+                "en": "",
+                "fr": "",
+                "it": ""
+            },
+            "display_name": {
+                "de": "Geschäftsorganisationen",
+                "en": "Business organisations",
+                "fr": "Organisations commerciales",
+                "it": "Organizzazioni aziendali"
+            },
+            "id": "57f9a53e-38fe-45e8-9160-bf1bf636f2a0",
+            "image_display_url": "",
+            "name": "businessorganisations-group",
+            "title": {
+                "de": "Geschäftsorganisationen",
+                "en": "Business organisations",
+                "fr": "Organisations commerciales",
+                "it": "Organizzazioni aziendali"
+            }
+        }
+    ],
+    "resources": [
+        {
+            "byte_size": 56670,
+            "cache_last_updated": null,
+            "cache_url": null,
+            "coverage": "Coverage",
+            "created": "2025-03-05T03:15:11.047770+01:00",
+            "datastore_active": false,
+            "datastore_contains_all_records_of_source_file": false,
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "format": "ZIP",
+            "hash": "",
+            "id": "8c2e6fe5-9a14-4cde-9c0d-4d67fd14c509",
+            "identifier": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+            "issued": "2025-03-05T03:15:10.944245+01:00",
+            "language": [],
+            "last_modified": "2025-03-05T03:15:10.983682+01:00",
+            "license": "",
+            "media_type": "application/zip",
+            "metadata_modified": "2025-03-05T03:15:12.023335+01:00",
+            "mimetype": "application/zip",
+            "mimetype_inner": "text/csv",
+            "modified": "2025-03-05T03:15:10.944245+01:00",
+            "name": {
+                "de": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+                "en": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+                "fr": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+                "it": "actual_date_business_organisation_versions_2025-03-05.csv.zip"
+            },
+            "package_id": "b8aedcd3-b49a-48f2-8975-6126b688d994",
+            "position": 0,
+            "relations": "[]",
+            "resource_type": null,
+            "rights": "http://odpch-web.begasoft.ch/de/terms-of-use/",
+            "size": 56670,
+            "state": "active",
+            "title": {
+                "de": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+                "en": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+                "fr": "actual_date_business_organisation_versions_2025-03-05.csv.zip",
+                "it": "actual_date_business_organisation_versions_2025-03-05.csv.zip"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/b8aedcd3-b49a-48f2-8975-6126b688d994/resource/8c2e6fe5-9a14-4cde-9c0d-4d67fd14c509/download/actual_date_business_organisation_versions_2025-03-05.csv.zip",
+            "url_type": "upload",
+            "version": "2025-03-05T03:15:10.944245+01:00"
+        },
+        {
+            "byte_size": 88005,
+            "cache_last_updated": null,
+            "cache_url": null,
+            "coverage": "Coverage",
+            "created": "2025-03-05T03:15:12.028959+01:00",
+            "datastore_active": false,
+            "datastore_contains_all_records_of_source_file": false,
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "format": "ZIP",
+            "hash": "",
+            "id": "3461fe2f-5b1a-40a6-95d5-48440dcb4bb6",
+            "identifier": "full_business_organisation_versions_2025-03-05.csv.zip",
+            "issued": "2025-03-05T03:15:11.937796+01:00",
+            "language": [],
+            "last_modified": "2025-03-05T03:15:11.980144+01:00",
+            "license": "",
+            "media_type": "application/zip",
+            "metadata_modified": "2025-03-05T03:15:13.235636+01:00",
+            "mimetype": "application/zip",
+            "mimetype_inner": "text/csv",
+            "modified": "2025-03-05T03:15:11.937796+01:00",
+            "name": {
+                "de": "full_business_organisation_versions_2025-03-05.csv.zip",
+                "en": "full_business_organisation_versions_2025-03-05.csv.zip",
+                "fr": "full_business_organisation_versions_2025-03-05.csv.zip",
+                "it": "full_business_organisation_versions_2025-03-05.csv.zip"
+            },
+            "package_id": "b8aedcd3-b49a-48f2-8975-6126b688d994",
+            "position": 1,
+            "relations": "[]",
+            "resource_type": null,
+            "rights": "http://odpch-web.begasoft.ch/de/terms-of-use/",
+            "size": 88005,
+            "state": "active",
+            "title": {
+                "de": "full_business_organisation_versions_2025-03-05.csv.zip",
+                "en": "full_business_organisation_versions_2025-03-05.csv.zip",
+                "fr": "full_business_organisation_versions_2025-03-05.csv.zip",
+                "it": "full_business_organisation_versions_2025-03-05.csv.zip"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/b8aedcd3-b49a-48f2-8975-6126b688d994/resource/3461fe2f-5b1a-40a6-95d5-48440dcb4bb6/download/full_business_organisation_versions_2025-03-05.csv.zip",
+            "url_type": "upload",
+            "version": "2025-03-05T03:15:11.937796+01:00"
+        },
+        {
+            "byte_size": 56667,
+            "cache_last_updated": null,
+            "cache_url": null,
+            "coverage": "Coverage",
+            "created": "2025-03-05T03:15:13.242270+01:00",
+            "datastore_active": false,
+            "datastore_contains_all_records_of_source_file": false,
+            "description": {
+                "fr": "",
+                "en": "",
+                "de": "",
+                "it": ""
+            },
+            "format": "ZIP",
+            "hash": "",
+            "id": "11a534a1-7a2e-4f5d-aac7-ed29f9386a62",
+            "identifier": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+            "issued": "2025-03-05T03:15:13.129459+01:00",
+            "language": [],
+            "last_modified": "2025-03-05T03:15:13.181069+01:00",
+            "license": "",
+            "media_type": "application/zip",
+            "metadata_modified": "2025-03-05T03:15:14.445124+01:00",
+            "mimetype": "application/zip",
+            "mimetype_inner": "text/csv",
+            "modified": "2025-03-05T03:15:13.129459+01:00",
+            "name": {
+                "de": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+                "en": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+                "fr": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+                "it": "future_timetable_business_organisation_versions_2025-03-05.csv.zip"
+            },
+            "package_id": "b8aedcd3-b49a-48f2-8975-6126b688d994",
+            "position": 2,
+            "relations": "[]",
+            "resource_type": null,
+            "rights": "http://odpch-web.begasoft.ch/de/terms-of-use/",
+            "size": 56667,
+            "state": "active",
+            "title": {
+                "de": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+                "en": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+                "fr": "future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+                "it": "future_timetable_business_organisation_versions_2025-03-05.csv.zip"
+            },
+            "url": "https://data.opentransportdata.swiss/dataset/b8aedcd3-b49a-48f2-8975-6126b688d994/resource/11a534a1-7a2e-4f5d-aac7-ed29f9386a62/download/future_timetable_business_organisation_versions_2025-03-05.csv.zip",
+            "url_type": "upload",
+            "version": "2025-03-05T03:15:13.129459+01:00"
+        }
+    ],
+    "tags": [],
+    "relationships_as_subject": [],
+    "relationships_as_object": [],
+    "display_name": {
+        "de": "Geschäftsorganisationen",
+        "en": "Business organisations",
+        "fr": "Organisations commerciales",
+        "it": "Organizzazioni aziendali"
+    }
+}
