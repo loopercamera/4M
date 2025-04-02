@@ -52,7 +52,7 @@ def compare_dataset_hashes(base_dir, remove_order_file, extension="xml", portal_
     latest_import = os.path.join(base_dir, "latest_import.csv")
     previous_import = os.path.join(base_dir, "previous_import.csv")
     comparison_file = os.path.join(base_dir, "comparison_result.csv")
-
+   
     # List all relevant files and compute their hashes
     dataset_names = []
     dataset_hashes = []

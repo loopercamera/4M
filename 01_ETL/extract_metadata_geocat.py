@@ -121,10 +121,12 @@ def extract_metadata(xml_file):
     for el in safe_find_all(".//gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions//gmd:CI_OnlineResource"):
         try:
             distribution_formats.append({
-                "format_name": el.findtext("gmd:protocol/gco:CharacterString", default="N/A", namespaces=namespace),
-                "download_url": el.findtext("gmd:linkage/gmd:URL", default="N/A", namespaces=namespace),
-                "resource_name": el.findtext("gmd:name/gco:CharacterString", default="N/A", namespaces=namespace),
-                "resource_description": el.findtext("gmd:description/gco:CharacterString", default="N/A", namespaces=namespace)
+                "dataset_identifier": file_identifier,
+                "xml_filename": xml_file,   
+                "distribution_format": el.findtext("gmd:protocol/gco:CharacterString", default="N/A", namespaces=namespace),
+                "distribution_download_url": el.findtext("gmd:linkage/gmd:URL", default="N/A", namespaces=namespace),
+                "distribution_title_UNKNOWN": el.findtext("gmd:name/gco:CharacterString", default="N/A", namespaces=namespace),
+                "distribution_description_UNKNOWN": el.findtext("gmd:description/gco:CharacterString", default="N/A", namespaces=namespace)
             })
         except Exception as e:
             log_error(f"Failed to extract distribution format in {xml_file}", exception=e)
@@ -155,7 +157,7 @@ def extract_metadata(xml_file):
         contact_points
     )
 
-def extract_and_save_all(input_folder, output_folder):
+def extract_and_save_all_geocat(input_folder, output_folder):
     portal_name = "geocat.ch"
     success_count = 0
     fail_count = 0
@@ -166,6 +168,8 @@ def extract_and_save_all(input_folder, output_folder):
         input_folder (str): Folder containing GeoCat XML files.
         output_folder (str): Folder to save output CSV files.
     """
+    log_error(f"Start extraction form geocat.ch XML files", level="info")
+
     dataset_data, distribution_data, contact_data = [], [], []
 
     for filename in os.listdir(input_folder):
@@ -206,7 +210,6 @@ def extract_and_save_all(input_folder, output_folder):
                 distribution_data.append(d)
 
             for c in contacts:
-                c.update({"contact_name_xml_filename": filename, "origin": "geocat.ch"})
                 contact_data.append(c)
 
     os.makedirs(output_folder, exist_ok=True)
@@ -234,7 +237,7 @@ def main():
     """
     input_folder = "saved_metadata_xml"
     output_folder = "."
-    extract_and_save_all(input_folder, output_folder)
+    extract_and_save_all_geocat(input_folder, output_folder)
     log_error("GeoCat metadata extraction completed successfully.", level="info")
 
 

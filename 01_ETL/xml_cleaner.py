@@ -96,6 +96,7 @@ def process_folder(folder_path):
 
 def process_folders(folders):
     """Process multiple folders containing XML files."""
+    log_error(f"Starting cleaning of XML {folders}", "info")
     for folder in folders:
         process_folder(folder)
 

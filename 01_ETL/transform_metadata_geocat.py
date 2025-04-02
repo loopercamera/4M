@@ -72,16 +72,19 @@ def merge_columns(df, target_col, source_col):
 
 
 def transform_date(date_str):
-    """Converts a date string to ISO format with time. Returns 'N/A' if empty or invalid."""
+    """
+    Converts a date string to SQL TIMESTAMP format ('YYYY-MM-DD HH:MM:SS').
+    Returns None if empty or invalid.
+    """
     try:
-        if pd.isna(date_str) or date_str.strip() == "":
-            return "N/A"
-        return datetime.fromisoformat(date_str).strftime("%Y-%m-%dT%H:%M:%S")
+        if pd.isna(date_str) or str(date_str).strip() == "":
+            return None
+        return datetime.fromisoformat(str(date_str)).strftime("%Y-%m-%d %H:%M:%S")
     except ValueError:
-        return date_str
+        return None
     except Exception as e:
         log_error("Failed to transform date", exception=e)
-        return date_str
+        return None
 
 
 def clean_value(value):
@@ -108,6 +111,14 @@ def process_dataset_metadata(file_path):
     """
     try:
         df = pd.read_csv(file_path, dtype=str)
+        
+        # Rename dataset_title to dataset_title_UNKNOWN if it exists
+        if "dataset_title" in df.columns:
+            df.rename(columns={"dataset_title": "dataset_title_UNKNOWN"}, inplace=True)
+        
+        # Rename dataset_title to dataset_title_UNKNOWN if it exists
+        if "dataset_description" in df.columns:
+            df.rename(columns={"dataset_description": "dataset_description_UNKNOWN"}, inplace=True)
 
         # Apply language mapping if column exists
         if "dataset_language" in df.columns:

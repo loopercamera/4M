@@ -139,8 +139,8 @@ def extract_contact_points(dataset_element, namespace, dataset_id):
         else:
             continue
         contact_points.append({
+            "dataset_identifier": dataset_id,
             "contact_type": contact_type,
-            "dataset_id": dataset_id,
             "contact_nodeID": node_id,
             "contact_email": email,
             "contact_name": name,
@@ -179,8 +179,9 @@ def extract_metadata_from_xml(xml_file, xml_filename):
     dataset_metadata.update(dataset_titles)
     return dataset_metadata, distributions, contact_points
 
-def extract_and_save_all(folder_path, output_folder):
+def extract_and_save_all_opendata_swiss(folder_path, output_folder):
     from error_logger import log_error  # Import here to make it safe in non-logging contexts
+    log_error(f"Start extraction form opendata.swiss XML files", level="info")
     dataset_data = []
     distribution_data = []
     contact_point_data = []
@@ -202,7 +203,7 @@ def extract_and_save_all(folder_path, output_folder):
         df_distribution = pd.DataFrame(distribution_data)
         df_contact_point = pd.DataFrame(contact_point_data)
         os.makedirs(output_folder, exist_ok=True)
-        df_dataset.to_csv(os.path.join(output_folder, "opendata_datasets_metadata.csv"), index=False)
+        df_dataset.to_csv(os.path.join(output_folder, "opendata_dataset_metadata.csv"), index=False)
         df_distribution.to_csv(os.path.join(output_folder, "opendata_distribution_metadata.csv"), index=False)
         df_contact_point.to_csv(os.path.join(output_folder, "opendata_contact_point_metadata.csv"), index=False)
 
@@ -232,7 +233,7 @@ if __name__ == "__main__":
     output_folder = ""
 
     try:
-        df_dataset, df_distribution, df_contact_point = extract_and_save_all(folder_path, output_folder)
+        df_dataset, df_distribution, df_contact_point = extract_and_save_all_opendata_swiss(folder_path, output_folder)
 
         print("Extracted Dataset Metadata:")
         print(df_dataset)

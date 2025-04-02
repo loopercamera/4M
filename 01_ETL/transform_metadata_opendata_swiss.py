@@ -81,7 +81,7 @@ def process_contact_metadata(path):
 
 def transform_opendata_swiss(folder_path):
     """Runs post-processing on all standard metadata CSV files in the current directory."""
-    process_dataset_metadata(os.path.join(folder_path, "opendata_datasets_metadata.csv"))
+    process_dataset_metadata(os.path.join(folder_path, "opendata_dataset_metadata.csv"))
     process_distribution_metadata(os.path.join(folder_path, "opendata_distribution_metadata.csv"))
     process_contact_metadata(os.path.join(folder_path, "opendata_contact_point_metadata.csv"))
     print("All post-processing steps completed.")
