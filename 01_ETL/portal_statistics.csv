@@ -1,11 +1,11 @@
-2025-03-27 22:23:18,opendata.swiss,Fetch Dataset Names,1,0
-2025-03-27 22:23:18,opendata.swiss,Save Dataset Names to CSV,1,0
-2025-03-27 22:23:18,opendata.swiss,Dataset Count,13102,0
-2025-03-27 22:23:41,opendata.swiss,Download XML Metadata,50,0
-2025-03-27 22:23:42,opendata.swiss,Clean XML Files,50,0
-2025-03-27 22:23:43,opendata.swiss,Hash Status: found,49,0
-2025-03-27 22:23:43,opendata.swiss,Hash Status: changed,1,0
-2025-03-27 22:23:43,opendata.swiss,Files Extracted,1,0
-2025-03-27 22:23:43,opendata.swiss,Rows in Datasets CSV,1,0
-2025-03-27 22:23:43,opendata.swiss,Rows in Distributions CSV,6,0
-2025-03-27 22:23:43,opendata.swiss,Rows in Contact Points CSV,2,0
+2025-04-02 14:19:41,opendata.swiss,Fetch Dataset Names,1,0
+2025-04-02 14:19:41,opendata.swiss,Save Dataset Names to CSV,1,0
+2025-04-02 14:19:41,opendata.swiss,Dataset Count,13221,0
+2025-04-02 14:20:38,opendata.swiss,Download XML Metadata,50,0
+2025-04-02 14:20:41,opendata.swiss,Clean XML Files,50,0
+2025-04-02 14:20:47,opendata.swiss,Hash Status: new,40,0
+2025-04-02 14:20:47,opendata.swiss,Hash Status: found,10,0
+2025-04-02 14:20:47,opendata.swiss,Files Extracted,40,0
+2025-04-02 14:20:47,opendata.swiss,Rows in Datasets CSV,40,0
+2025-04-02 14:20:47,opendata.swiss,Rows in Distributions CSV,55,0
+2025-04-02 14:20:47,opendata.swiss,Rows in Contact Points CSV,41,0

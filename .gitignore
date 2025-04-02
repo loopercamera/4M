@@ -3,7 +3,8 @@
 01_ETL/01_opendata.swiss/
 01_ETL/02_geocat.ch/
 01_ETL/11_group/
-
+01_ETL/ETL_logfile.log
+01_ETL/portal_statistics.csv
 01_ETL/21_load/db_config.json
 
 #02_NLP
@@ -11,3 +12,4 @@
 02_NLP/01_Testing/02_Gensim_Fasttext/data
 02_NLP/01_Testing/04_SBERT/data
 02_NLP/02_Prototype/data
+
