@@ -27,8 +27,8 @@ xml_cleaner.process_folders([
 # 1.3 Compare metadata
 from dataset_change_detector import compare_dataset_hashes
 compare_dataset_hashes(
-    base_dir=r"C:\FHNW_lokal\6000\4M\01_ETL\01_opendata.swiss",
-    remove_order_file=r"C:\FHNW_lokal\6000\4M\01_ETL\removeorder_metadata_opendata.swiss.csv",
+    base_dir=r"01_ETL\01_opendata.swiss",
+    remove_order_file=r"01_ETL\removeorder_metadata_opendata.swiss.csv",
     extension="xml",
     portal_name="opendata.swiss"
 )
@@ -54,7 +54,7 @@ download_geocat_metadata(
     save_dir=r"01_ETL\02_geocat.ch\saved_metadata_xml",
     batch_size=100,
     wait_time=1,
-    max_records=100  # Set to None to download everything
+    max_records=None  # Set to None to download everything
 )
 
 # 2.2 Clean metadata

@@ -94,7 +94,7 @@ def compare_dataset_hashes(base_dir, remove_order_file, extension="xml", portal_
     else:
         latest_df["status"] = "new"
         final_df = latest_df
-    
+
     final_df.to_csv(comparison_file, index=False)
 
     # Logging summary statistics
