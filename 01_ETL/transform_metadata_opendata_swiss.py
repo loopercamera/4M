@@ -1,4 +1,3 @@
-# postprocess_metadata.py
 """
 Module for post-processing CSV metadata files extracted from DCAT-AP-CH XML metadata.
 Includes:
@@ -13,6 +12,9 @@ import pandas as pd
 import ast
 from datetime import datetime
 import os
+import xml.etree.ElementTree as ET
+from error_logger import log_error  # Import log_error from error_logger.py
+
 
 values_to_remove = {"N/A", "[N/A]"}
 
@@ -57,7 +59,6 @@ def process_dataset_metadata(path):
     for col in df.columns:
         df[col] = df[col].map(clean_value)
     df.to_csv(path, index=False)
-    print(f"Processed {path}")
 
 def process_distribution_metadata(path):
     """Cleans and transforms the distribution metadata CSV file at the given path."""
@@ -69,7 +70,6 @@ def process_distribution_metadata(path):
     for col in df.columns:
         df[col] = df[col].map(clean_value)
     df.to_csv(path, index=False)
-    print(f"Processed {path}")
 
 def process_contact_metadata(path):
     """Cleans and transforms the contact metadata CSV file at the given path."""
@@ -77,15 +77,24 @@ def process_contact_metadata(path):
     for col in df.columns:
         df[col] = df[col].map(clean_value)
     df.to_csv(path, index=False)
-    print(f"Processed {path}")
 
 def transform_opendata_swiss(folder_path):
     """Runs post-processing on all standard metadata CSV files in the current directory."""
-    process_dataset_metadata(os.path.join(folder_path, "opendata_dataset_metadata.csv"))
-    process_distribution_metadata(os.path.join(folder_path, "opendata_distribution_metadata.csv"))
-    process_contact_metadata(os.path.join(folder_path, "opendata_contact_point_metadata.csv"))
-    print("All post-processing steps completed.")
+    log_error(f"Transformation of opendata.swiss metadata datasets started", "info")
+    try:
+        process_dataset_metadata(os.path.join(folder_path, "opendata_dataset_metadata.csv"))
+        process_distribution_metadata(os.path.join(folder_path, "opendata_distribution_metadata.csv"))
+        process_contact_metadata(os.path.join(folder_path, "opendata_contact_point_metadata.csv"))
+        log_error(f"Transformation of opendata.swiss metadata datasets finished successfully", "info")
+    except ET.ParseError as e:
+        log_error(f"Transformation of opendata.swiss metadata datasets failed", "error", e)
 
 if __name__ == "__main__":
     import os
-    transform_opendata_swiss(".")
+    log_error(f"Transformation of opendata.swiss metadata datasets started", "info")
+    try:
+        transform_opendata_swiss(".")
+        log_error(f"Transformation of opendata.swiss metadata datasets finished successfully", "info")
+    except ET.ParseError as e:
+        log_error(f"Transformation of opendata.swiss metadata datasets failed", "error", e)
+

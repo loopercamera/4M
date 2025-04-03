@@ -102,3 +102,4 @@ def process_folders(folders):
 
     # Save statistics for future analysis
     save_statistics()
+    log_error(f"Finished cleaning of XML {folders} successfully", "info")

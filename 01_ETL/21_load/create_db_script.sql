@@ -41,7 +41,6 @@ CREATE TABLE merged_dataset_metadata (
 CREATE TABLE merged_contact_point_metadata (
     dataset_identifier TEXT,
     contact_type TEXT,
-    contact_nodeID TEXT,
     contact_email TEXT,
     contact_name TEXT,
     origin TEXT,

@@ -124,14 +124,12 @@ def extract_contact_points(dataset_element, namespace, dataset_id):
         individual_element = contact_element.find("vcard:Individual", namespace)
         if organization_element is not None:
             contact_type = "Organization"
-            node_id = organization_element.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}nodeID", "N/A")
             email_element = organization_element.find("vcard:hasEmail", namespace)
             email = email_element.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource", "N/A") if email_element is not None else "N/A"
             name_element = organization_element.find("vcard:fn", namespace)
             name = name_element.text.strip() if name_element is not None else "N/A"
         elif individual_element is not None:
             contact_type = "Individual"
-            node_id = ""
             email_element = individual_element.find("vcard:hasEmail", namespace)
             email = email_element.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource", "N/A") if email_element is not None else "N/A"
             name_element = individual_element.find("vcard:fn", namespace)
@@ -141,7 +139,6 @@ def extract_contact_points(dataset_element, namespace, dataset_id):
         contact_points.append({
             "dataset_identifier": dataset_id,
             "contact_type": contact_type,
-            "contact_nodeID": node_id,
             "contact_email": email,
             "contact_name": name,
             "origin": "opendata.swiss"

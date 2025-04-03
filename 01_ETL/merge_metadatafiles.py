@@ -77,7 +77,7 @@ DISTRIBUTION_COLUMNS = [
 
 
 CONTACT_POINT_COLUMNS = [
-    "dataset_identifier", "contact_type", "contact_nodeID", "contact_email", "contact_name", "origin", "xml_filename"
+    "dataset_identifier", "contact_type", "contact_email", "contact_name", "origin", "xml_filename"
 ]
 
 # Template functions for merging
@@ -106,7 +106,6 @@ def merge_csv_files(input_files: List[str], output_file: str, required_columns: 
 
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         merged_df.to_csv(output_file, index=False)
-        print(f"Merging completed. '{output_file}' saved successfully!")
     except Exception as e:
         log_error(f"Failed to merge and save CSV files to '{output_file}'", level="error", exception=e)
 
@@ -124,7 +123,7 @@ def merge_dataset_metadata(folders: List[str], output_dir: str) -> None:
         output_file = os.path.join(output_dir, "merged_dataset_metadata.csv")
         merge_csv_files(input_paths, output_file, required_columns=DATASET_COLUMNS)
     else:
-        print(f"No dataset metadata files found with suffix '{suffix}' in folders: {folders}")
+        log_error(f"No dataset metadata files found with suffix  '{output_file}'", level="error")
 
 
 def merge_distribution_metadata(folders: List[str], output_dir: str) -> None:
@@ -140,7 +139,7 @@ def merge_distribution_metadata(folders: List[str], output_dir: str) -> None:
         output_file = os.path.join(output_dir, "merged_distribution_metadata.csv")
         merge_csv_files(input_paths, output_file, required_columns=DISTRIBUTION_COLUMNS)
     else:
-        print(f"No distribution metadata files found with suffix '{suffix}' in folders: {folders}")
+        log_error(f"No distribution metadata files found with suffix   '{output_file}'", level="error")
 
 
 def merge_contact_point_metadata(folders: List[str], output_dir: str) -> None:
@@ -156,7 +155,8 @@ def merge_contact_point_metadata(folders: List[str], output_dir: str) -> None:
         output_file = os.path.join(output_dir, "merged_contact_point_metadata.csv")
         merge_csv_files(input_paths, output_file, required_columns=CONTACT_POINT_COLUMNS)
     else:
-        print(f"No contact point metadata files found with suffix '{suffix}' in folders: {folders}")
+        log_error(f"No contact point metadata files found with suffix '{output_file}'", level="error")
+
 
 
 def merge_all_metadata(folders: List[str], output_dir):

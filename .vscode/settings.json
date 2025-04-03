@@ -8,5 +8,17 @@
     "Principa",
     "Principaux",
     "swiss"
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5433,
+      "driver": "PostgreSQL",
+      "name": "4M",
+      "database": "4M",
+      "username": "postgres",
+      "password": "1234"
+    }
   ]
 }

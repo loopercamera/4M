@@ -10,9 +10,6 @@ Provides utilities to:
 Usage:
     python metadata_manager.py --folder ./data --config ./db_config.json --sql ./tables.sql
     python metadata_manager.py --csv removeorder_metadata_opendata.swiss.csv --db 4M
-
-Author: Your Name
-Date: 2025-03-26
 """
 
 import psycopg2
@@ -53,7 +50,7 @@ def create_database(db_name, config_path, sql_file_path):
     cur = conn.cursor()
     try:
         cur.execute(sql.SQL("CREATE DATABASE {} ").format(sql.Identifier(db_name)))
-        print(f"Database '{db_name}' created.")
+        log_error(f"Database '{db_name}' created successfully", "info")
         execute_sql_script(db_name, sql_file_path, config_path)
     except errors.DuplicateDatabase:
         log_error(f"Database '{db_name}' already exists.", level="warning")
@@ -71,7 +68,7 @@ def delete_database(db_name, config_path):
     cur = conn.cursor()
     try:
         cur.execute(sql.SQL("DROP DATABASE {} ").format(sql.Identifier(db_name)))
-        print(f"Database '{db_name}' deleted.")
+        log_error(f"Database '{db_name}' deleted.", "info")
     except errors.InvalidCatalogName:
         log_error(f"Database '{db_name}' does not exist.", level="warning")
     except errors.ObjectInUse:
@@ -84,7 +81,6 @@ def delete_database(db_name, config_path):
 
 def reset_database(db_name, config_path, sql_file_path):
     if database_exists(db_name, config_path):
-        print(f"Deleting and recreating database '{db_name}'...")
         delete_database(db_name, config_path)
         create_database(db_name, config_path, sql_file_path)
     else:
@@ -102,6 +98,7 @@ def execute_sql_script(db_name, sql_file_path, config_path):
             sql_script = f.read()
         cur.execute(sql_script)
         print(f"SQL script '{sql_file_path}' executed successfully on database '{db_name}'.")
+        log_error(f"Database tables successfully build in Database '{db_name}'", "info")
     except Exception as e:
         log_error("Error executing SQL script", exception=e)
     finally:
@@ -120,7 +117,7 @@ def load_csv_to_table(db_name, table_name, csv_path, config_path):
                 sql.SQL("COPY {} FROM STDIN WITH CSV HEADER").format(sql.Identifier(table_name)),
                 f
             )
-        print(f"CSV '{csv_path}' loaded into table '{table_name}'.")
+        log_error(f"Successfully loaded CSV '{csv_path}' into the table '{db_name}'", "info")
     except Exception as e:
         log_error(f"Error loading CSV '{csv_path}' into table '{table_name}'", exception=e)
     finally:
@@ -149,13 +146,16 @@ def delete_metadata_by_filename(db_name, xml_filename, config_path):
         cur.execute("SELECT dataset_identifier FROM merged_dataset_metadata WHERE xml_filename = %s;", (xml_filename,))
         dataset_ids = cur.fetchall()
         if not dataset_ids:
-            print(f"No entries found for xml_filename = '{xml_filename}'")
+            print(f"")
+            log_error(f"No datasets found int the remove order to delete in the database", "info")
         else:
+            log_error(f"Start deleting datasets from the remove order", "info")
             for dataset_id, in dataset_ids:
                 cur.execute("DELETE FROM merged_dataset_metadata WHERE dataset_identifier = %s;", (dataset_id,))
             print(f"Deleted {len(dataset_ids)} dataset(s) for xml_filename = '{xml_filename}'")
         cur.close()
         conn.close()
+        log_error(f"Successfully deleted all datasets from the remove order", "info")
     except Exception as e:
         log_error("Error deleting metadata entries", exception=e)
 
