@@ -167,9 +167,11 @@ def extract_metadata_from_xml(xml_file, xml_filename):
     dataset_titles = extract_multilang_elements("dct:title", dataset_element, namespace, "dataset_title")
     distributions = extract_distributions(dataset_element, namespace, dataset_id)
     contact_points = extract_contact_points(dataset_element, namespace, dataset_id)
+    dataset_language = [lang.text.strip() for lang in dataset_element.findall("dct:language", namespace) if lang.text] or ["N/A"]
     dataset_metadata = {
         "dataset_identifier": dataset_id,
-        "origin": "opendata.swiss"
+        "origin": "opendata.swiss",
+        "dataset_language" : dataset_language
     }
     dataset_metadata.update(sorted_keywords)
     dataset_metadata.update(dataset_descriptions)

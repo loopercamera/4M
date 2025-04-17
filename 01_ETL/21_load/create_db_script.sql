@@ -33,7 +33,9 @@ CREATE TABLE merged_dataset_metadata (
     dataset_publisher_URL TEXT,
 
     dataset_theme TEXT,
-    dataset_issued TEXT
+    dataset_issued TEXT,
+
+    dataset_is_mobility BOOLEAN
 
 );
 

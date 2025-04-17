@@ -124,8 +124,8 @@ def load_csv_to_table(db_name, table_name, csv_path, config_path):
         cur.close()
         conn.close()
 
-def load_metadata(folder_path, config_path, table_sql_path):
-    db_name = "4M"
+def load_metadata(folder_path, config_path,db_name = "4M"):
+
     load_csv_to_table(db_name, "merged_dataset_metadata", os.path.join(folder_path, "merged_dataset_metadata.csv"), config_path)
     load_csv_to_table(db_name, "merged_contact_point_metadata", os.path.join(folder_path, "merged_contact_point_metadata.csv"), config_path)
     load_csv_to_table(db_name, "merged_distribution_metadata", os.path.join(folder_path, "merged_distribution_metadata.csv"), config_path)
@@ -159,18 +159,31 @@ def delete_metadata_by_filename(db_name, xml_filename, config_path):
     except Exception as e:
         log_error("Error deleting metadata entries", exception=e)
 
-def delete_from_csv_list(csv_path, db_name, config_path):
-    try:
-        with open(csv_path, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                dataset_name = row.get('Dataset_Name')
-                if dataset_name:
-                    xml_filename = f"{dataset_name}.xml"
-                    print(f"Deleting metadata for XML filename: {xml_filename}")
-                    delete_metadata_by_filename(db_name, xml_filename, config_path)
-    except Exception as e:
-        log_error("Error processing CSV file for deletions", exception=e)
+
+def delete_from_csv_list(csv_paths, db_name, config_path):
+    if isinstance(csv_paths, str):
+        csv_paths = [csv_paths]  # Ensure it's a list
+
+    for csv_path in csv_paths:
+        if not os.path.exists(csv_path):
+            log_error(f"File not found, skipping: {csv_path}", exception=e)
+            continue
+
+        try:
+            log_error(f"Start removing all requested data from: {csv_path}", "info")
+            with open(csv_path, newline='', encoding='utf-8') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    dataset_name = row.get('Dataset_Name')
+                    if dataset_name:
+                        xml_filename = f"{dataset_name}.xml"
+                        delete_metadata_by_filename(db_name, xml_filename, config_path)
+            log_error(f"Removing completed from: {csv_path}", "info")
+        except Exception as e:
+            log_error(f"Error processing CSV file for deletions: {csv_path}", exception=e)
+    log_error(f"Removing endet:", "info")
+
+
 
 
 # --------------- CLI ENTRY POINT ----------------

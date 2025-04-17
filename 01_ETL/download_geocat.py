@@ -1,157 +1,250 @@
+# metadata_downloader.py
+
 import requests
 import xml.etree.ElementTree as ET
 import os
 import time
+import csv
+import pandas as pd
 import re
-from error_logger import log_error, log_start_message
-from statistics_logger import log_portal_result, save_statistics
+from datetime import datetime
 
-# CSW endpoint and schema
 CSW_URL = "https://www.geocat.ch/geonetwork/srv/deu/csw"
-SCHEMA = "http://www.geocat.ch/2008/che"
+WAIT_TIME = 0
+
+
+# ===========================
+# CSW FETCH FUNCTIONS
+# ===========================
+
+def fetch_records_sorted_by_identifier(start_position=1, max_records=100, ascending=True):
+    sort_order = "ASC" if ascending else "DESC"
+    headers = {'Content-Type': 'application/xml'}
+    xml_payload = f"""<?xml version="1.0" encoding="UTF-8"?>
+<csw:GetRecords
+    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    service="CSW"
+    version="2.0.2"
+    resultType="results"
+    startPosition="{start_position}"
+    maxRecords="{max_records}"
+    outputFormat="application/xml"
+    outputSchema="http://www.opengis.net/cat/csw/2.0.2"
+    xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2
+        http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+    <csw:Query typeNames="csw:Record">
+        <csw:ElementSetName>full</csw:ElementSetName>
+        <ogc:SortBy>
+            <ogc:SortProperty>
+                <ogc:PropertyName>dc:identifier</ogc:PropertyName>
+                <ogc:SortOrder>{sort_order}</ogc:SortOrder>
+            </ogc:SortProperty>
+        </ogc:SortBy>
+    </csw:Query>
+</csw:GetRecords>"""
+
+    response = requests.post(CSW_URL, headers=headers, data=xml_payload)
+    response.raise_for_status()
+    return response.text
+
+def is_exception_report(xml_text):
+    try:
+        root = ET.fromstring(xml_text)
+        return root.tag.endswith("ExceptionReport")
+    except ET.ParseError:
+        return False
+
+def extract_title_and_id(xml_text, start_position):
+    namespaces = {
+        "csw": "http://www.opengis.net/cat/csw/2.0.2",
+        "dc": "http://purl.org/dc/elements/1.1/"
+    }
+    try:
+        if is_exception_report(xml_text):
+            raise ValueError(f"ExceptionReport at position {start_position}")
+
+        root = ET.fromstring(xml_text)
+        records = root.findall(".//csw:Record", namespaces)
+        results = []
+        for record in records:
+            title_el = record.find("dc:title", namespaces)
+            identifier_el = record.find("dc:identifier", namespaces)
+            title = title_el.text.strip() if title_el is not None else "(kein Titel)"
+            identifier = identifier_el.text.strip() if identifier_el is not None else "(kein Identifier)"
+            results.append((identifier, title))
+        return results, len(records), root
+    except ET.ParseError as e:
+        return [], 0, None
+
+def get_total_records(xml_root):
+    search_results = xml_root.find(".//{http://www.opengis.net/cat/csw/2.0.2}SearchResults")
+    if search_results is not None and "numberOfRecordsMatched" in search_results.attrib:
+        return int(search_results.attrib["numberOfRecordsMatched"])
+    return None
+
+def robust_fetch(start, end, ascending=True, log_file=None):
+    batch_size = end - start + 1
+    try:
+        xml_data = fetch_records_sorted_by_identifier(start_position=start, max_records=batch_size, ascending=ascending)
+        title_id_pairs, _, _ = extract_title_and_id(xml_data, start)
+        return title_id_pairs
+    except Exception as e:
+        if batch_size == 1:
+            if log_file:
+                direction = "(reversed)" if not ascending else "(forward)"
+                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                with open(log_file, mode="a", encoding="utf-8") as log:
+                    log.write(f"[{timestamp}] FinalFetchError {direction} at position {start}: {type(e).__name__}: {e}\n")
+            return []
+        else:
+            mid = (start + end) // 2
+            results1 = robust_fetch(start, mid, ascending, log_file)
+            results2 = robust_fetch(mid + 1, end, ascending, log_file)
+            return results1 + results2
+
+def download_geocat_metadata(save_dir=r"01_ETL\02_geocat.ch", csv_file="geocat_dataset_id_title.csv", log_file=None, start_pos=None, batch_size=1000):
+    os.makedirs(save_dir, exist_ok=True)
+    path_csv = os.path.join(save_dir, csv_file)
+    if log_file:
+        log_file = os.path.join(save_dir, log_file)
+
+    log_initialized = False
+
+    all_titles_and_ids = []
+    total_fetched = 0
+    ascending = True
+
+    try:
+        initial_xml = fetch_records_sorted_by_identifier(start_position=1, max_records=1, ascending=ascending)
+        _, _, root = extract_title_and_id(initial_xml, 1)
+        total_records = get_total_records(root)
+        print(f"Total records available: {total_records}")
+    except Exception as e:
+        print(f"Failed to fetch total number of records: {e}")
+        return
+
+    first_half_limit = 15000
+
+    if start_pos:
+        ascending = True
+        start = start_pos
+        while start < first_half_limit:
+            if log_file and not log_initialized:
+                open(log_file, mode="w").close()
+                log_initialized = True
+
+            end = min(start + batch_size - 1, first_half_limit - 1)
+            title_id_pairs = robust_fetch(start, end, ascending, log_file)
+            print(f"Fetched records {start} to {end}")
+            all_titles_and_ids.extend(title_id_pairs)
+            total_fetched += len(title_id_pairs)
+            start += batch_size
+            time.sleep(WAIT_TIME)
+
+        total_reverse_fetch = total_records - first_half_limit
+        ascending = False
+        for i in range(0, total_reverse_fetch, batch_size):
+            rel_start = i + 1
+            rel_end = min(i + batch_size, total_reverse_fetch)
+            title_id_pairs = robust_fetch(rel_start, rel_end, ascending, log_file)
+            print(f"Fetched records {rel_start} to {rel_end} (reversed)")
+            all_titles_and_ids.extend(title_id_pairs[::-1])
+            total_fetched += len(title_id_pairs)
+            time.sleep(WAIT_TIME)
+    else:
+        start = 1
+        while start <= first_half_limit:
+            if log_file and not log_initialized:
+                open(log_file, mode="w").close()
+                log_initialized = True
+
+            end = min(start + batch_size - 1, first_half_limit)
+            title_id_pairs = robust_fetch(start, end, ascending, log_file)
+            print(f"Fetched records {start} to {end}")
+            all_titles_and_ids.extend(title_id_pairs)
+            total_fetched += len(title_id_pairs)
+            start += batch_size
+            time.sleep(WAIT_TIME)
+
+        start = total_records
+        ascending = False
+        while start > first_half_limit:
+            end = max(start - batch_size + 1, first_half_limit + 1)
+            title_id_pairs = robust_fetch(end, start, ascending, log_file)
+            print(f"Fetched records {end} to {start}")
+            all_titles_and_ids.extend(title_id_pairs[::-1])
+            total_fetched += len(title_id_pairs)
+            start = end - 1
+            time.sleep(WAIT_TIME)
+
+    with open(path_csv, mode="w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Identifier", "Title"])
+        writer.writerows(all_titles_and_ids)
+
+    print(f"Done. Total records fetched: {total_fetched}")
+    print(f"Results saved to {path_csv}")
+
+
+
+
+# ===========================
+# XML METADATA RETRIEVAL
+# ===========================
+
+
+
+
 
 def sanitize_filename(identifier):
     return re.sub(r'[<>:"/\\|?*]', '_', identifier)
 
-def get_total_record_count():
-    # Use a known working schema and request setup
-    params = {
-        "service": "CSW",
-        "version": "2.0.2",
-        "request": "GetRecords",
-        "namespace": "xmlns(csw=http://www.opengis.net/cat/csw/2.0.2)",
-        "typeNames": "csw:Record",
-        "elementSetName": "full",
-        "resultType": "results",
-        "outputFormat": "application/xml",
-        "outputSchema": SCHEMA,
-        "maxRecords": 1,
-        "startPosition": 1,
-        "sortBy": "title:A"
-    }
+
+def fetch_and_save_metadata(identifier, save_folder):
+    url = f"https://www.geocat.ch/geonetwork/srv/api/records/{identifier}/formatters/xml?approved=true"
     try:
-        prepared = requests.Request('GET', CSW_URL, params=params).prepare()
-        print("Request URL (get_total_record_count):", prepared.url)
-        response = requests.get(CSW_URL, params=params)
+        response = requests.get(url, timeout=10)
         response.raise_for_status()
-        root = ET.fromstring(response.text)
-        search_results = root.find(".//{http://www.opengis.net/cat/csw/2.0.2}SearchResults")
-        if search_results is not None:
-            return int(search_results.attrib.get("numberOfRecordsMatched", 0))
-        else:
-            log_error("SearchResults not found in get_total_record_count.")
-            log_error(f"Response content:\n{response.text[:1000]}...")
-            return 0
-    except Exception as e:
-        log_error("Failed to fetch total record count.", exception=e)
-        return 0
 
-def fetch_records(start_position, max_records):
-    params = {
-        "service": "CSW",
-        "version": "2.0.2",
-        "request": "GetRecords",
-        "namespace": "xmlns(csw=http://www.opengis.net/cat/csw/2.0.2)",
-        "typeNames": "csw:Record",
-        "elementSetName": "full",
-        "resultType": "results",
-        "outputFormat": "application/xml",
-        "outputSchema": SCHEMA,
-        "maxRecords": max_records,
-        "startPosition": start_position,
-        "sortBy": "title:A"
-    }
+        xml_content = response.content.decode('utf-8')
+        xml_content = '\n'.join([line.strip() for line in xml_content.splitlines() if line.strip()])
 
-    try:
-        prepared = requests.Request('GET', CSW_URL, params=params).prepare()
-        print("Request URL (fetch_records):", prepared.url)
-        response = requests.get(CSW_URL, params=params)
-        response.raise_for_status()
-        xml_text = response.text
+        safe_identifier = sanitize_filename(identifier)
+        xml_path = os.path.join(save_folder, f"{safe_identifier}.xml")
 
-        root = ET.fromstring(xml_text)
+        with open(xml_path, "w", encoding="utf-8") as file:
+            file.write(xml_content)
 
-        # Check for ExceptionReport
-        exception = root.find(".//{http://www.opengis.net/ows}ExceptionText")
-        if exception is not None:
-            log_error("Exception in response: " + exception.text.strip())
-            log_error(f"Problematic XML (start_position={start_position}): {xml_text[:1000]}...")
-            return xml_text, 0, 0
+        return True
 
-        search_results = root.find(".//{http://www.opengis.net/cat/csw/2.0.2}SearchResults")
-        if search_results is None:
-            log_error("SearchResults element not found in response.")
-            log_error(f"Problematic XML (start_position={start_position}): {xml_text[:1000]}...")
-            return xml_text, 0, 0
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching metadata for {identifier}: {e}")
+    except OSError as e:
+        print(f"Error saving metadata for {identifier}: {e}")
+    return False
 
-        num_returned = int(search_results.attrib.get("numberOfRecordsReturned", 0))
-        num_matched = int(search_results.attrib.get("numberOfRecordsMatched", 0))
+def download_xml_metadata_from_csv(save_dir="01_ETL\\02_geocat.ch", csv_file="geocat_dataset_id_title.csv", max_files=None):
+    save_folder = os.path.join(save_dir, "saved_metadata_xml")
+    print("Save folder:", save_folder)
 
-        return xml_text, num_returned, num_matched
-    except Exception as e:
-        log_error("Failed to fetch records from GeoCat CSW.", exception=e)
-        return "", 0, 0
+    os.makedirs(save_folder, exist_ok=True)
 
-def extract_and_save_each_metadata(xml_text, save_dir):
-    namespaces = {
-        "che": "http://www.geocat.ch/2008/che",
-        "gmd": "http://www.isotc211.org/2005/gmd",
-        "gco": "http://www.isotc211.org/2005/gco"
-    }
-    try:
-        root = ET.fromstring(xml_text)
-        records = root.findall(".//che:CHE_MD_Metadata", namespaces)
-    except Exception as e:
-        log_error("Failed to parse XML metadata.", exception=e)
-        return 0
+    path_csv = os.path.join(save_dir, csv_file)
+    print("CSV path:", path_csv)
 
-    saved_count = 0
-    for record in records:
-        try:
-            identifier_el = record.find(".//gmd:fileIdentifier/gco:CharacterString", namespaces)
-            identifier = identifier_el.text.strip() if identifier_el is not None else None
-            if identifier:
-                safe_name = sanitize_filename(identifier)
-                filename = os.path.join(save_dir, f"{safe_name}.xml")
-                with open(filename, "w", encoding="utf-8") as f:
-                    xml_str = ET.tostring(record, encoding="unicode")
-                    f.write(xml_str)
-                saved_count += 1
-            else:
-                log_error("Skipping record with missing identifier.")
-        except Exception as e:
-            log_error("Failed to save individual metadata record.", exception=e)
-    return saved_count
+    df_datasets = pd.read_csv(path_csv)
+    num_records = len(df_datasets) if max_files is None else min(max_files, len(df_datasets))
 
-def download_geocat_metadata(save_dir="saved_metadata_xml", batch_size=100, wait_time=1, max_records=None):
-    os.makedirs(save_dir, exist_ok=True)
-    print("Starting download of metadata records...")
+    downloaded = 0
+    for idx, row in df_datasets.head(num_records).iterrows():
+        success = fetch_and_save_metadata(row["Identifier"], save_folder)
+        if success:
+            downloaded += 1
+            if downloaded % 500 == 0:
+                print(f"{downloaded} downloaded")
 
-    total_available = get_total_record_count()
-    print(f"Total number of records available: {total_available}")
+    print(f"✅ Metadata retrieval completed. Total downloaded: {downloaded}/{num_records}")
 
-    if max_records is None or max_records > total_available:
-        max_records = total_available
 
-    start = 1
-    total_saved = 0
-
-    while start <= max_records:
-        print(f"Fetching record {start}...")
-        xml_data, num_returned, _ = fetch_records(start_position=start, max_records=1)
-        if num_returned == 0:
-            print("No record returned or an error occurred. Skipping.")
-        else:
-            saved = extract_and_save_each_metadata(xml_data, save_dir)
-            total_saved += saved
-
-        start += 1
-        time.sleep(wait_time)
-
-    print(f"Done. Total records saved: {total_saved}")
-    log_error(f"Download completed. Total records saved: {total_saved}", level="info")
-    log_portal_result("GeoCat", "Download Metadata", success=total_saved)
-    save_statistics()
-
-if __name__ == "__main__":
-    download_geocat_metadata()

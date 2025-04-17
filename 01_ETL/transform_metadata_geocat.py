@@ -114,11 +114,11 @@ def process_dataset_metadata(file_path):
         
         # Rename dataset_title to dataset_title_UNKNOWN if it exists
         if "dataset_title" in df.columns:
-            df.rename(columns={"dataset_title": "dataset_title_UNKNOWN"}, inplace=True)
-        
-        # Rename dataset_title to dataset_title_UNKNOWN if it exists
+            df["dataset_title_UNKNOWN"] = df.pop("dataset_title")
+
+        # Rename dataset_description to dataset_description_UNKNOWN if it exists
         if "dataset_description" in df.columns:
-            df.rename(columns={"dataset_description": "dataset_description_UNKNOWN"}, inplace=True)
+            df["dataset_description_UNKNOWN"] = df.pop("dataset_description")
 
         # Apply language mapping if column exists
         if "dataset_language" in df.columns:
@@ -149,7 +149,7 @@ def clean_csv_file(file_path):
     """
     try:
         df = pd.read_csv(file_path, dtype=str)
-        df = df.applymap(clean_value)
+        df = df.map(clean_value)
         df.to_csv(file_path, index=False)
         print(f"Cleaned values in: {file_path}")
     except Exception as e:

@@ -39,7 +39,7 @@ from error_logger import log_error
 from statistics_logger import log_portal_result, save_statistics, count_datasets_in_csv
 
 PORTAL_NAME = "opendata.swiss"
-MAX_DATASETS = 50  # Set to None to download all datasets
+MAX_DATASETS = None  # Set to None to download all datasets
 
 def fetch_datasets():
     """

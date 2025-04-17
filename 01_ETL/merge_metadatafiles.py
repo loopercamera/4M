@@ -14,9 +14,9 @@ DATASET_COLUMNS = [
     "dataset_keyword_DE",
     "dataset_description_DE",
 
-    "dataset_title",
+    "dataset_title_UNKNOWN",
     "dataset_keyword_UNKNOWN",
-    "dataset_description",
+    "dataset_description_UNKNOWN",
 
     "dataset_title_EN",
     "dataset_keyword_EN",
@@ -39,6 +39,7 @@ DATASET_COLUMNS = [
 
     "dataset_theme",
     "dataset_issued",
+    "dataset_is_mobility"
 
 ]
 

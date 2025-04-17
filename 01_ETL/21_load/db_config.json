@@ -1,6 +1,6 @@
 {
-  "host": "localhost",
-  "port": 5433,
-  "user": "postgres",
-  "password": "1234"
+  "host": "v001457.edu.ds.fhnw.ch",
+  "port": 5432,
+  "user": "bth_4m",
+  "password": "bth_4m"
 }

@@ -142,7 +142,7 @@ def extract_metadata(xml_file):
             })
         except Exception as e:
             log_error(f"Failed to extract contact point in {xml_file}", exception=e)
-
+    
     return (
         file_identifier,
         dataset_language,
@@ -210,6 +210,7 @@ def extract_and_save_all_geocat(input_folder, output_folder):
                 distribution_data.append(d)
 
             for c in contacts:
+                c.update({"dataset_identifier": file_id,"xml_filename": filename, "origin": "geocat.ch"})
                 contact_data.append(c)
 
     os.makedirs(output_folder, exist_ok=True)

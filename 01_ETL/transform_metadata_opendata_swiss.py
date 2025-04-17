@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 from error_logger import log_error  # Import log_error from error_logger.py
 
 
-values_to_remove = {"N/A", "[N/A]"}
+values_to_remove = {"N/A", "[N/A]","['N/A']"}
 
 def sort_languages_in_column(df, column):
     """Sorts and normalizes language entries in a column if the values are lists."""
