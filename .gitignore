@@ -6,6 +6,7 @@
 01_ETL/ETL_logfile.log
 01_ETL/portal_statistics.csv
 01_ETL/21_load/db_config.json
+01_ETL/21_load/db_config_lokal.json
 
 #02_NLP
 02_NLP/00_bin
