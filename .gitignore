@@ -10,10 +10,11 @@
 
 #02_NLP
 02_NLP/00_bin
-02_NLP/01_Testing_LM/01_Fasttext/data
-02_NLP/01_Testing_LM/02_Gensim_Fasttext/data
-02_NLP/01_Testing_LM/03_BERT/data
-02_NLP/01_Testing_LM/04_SBERT/data
-02_NLP/02_Prototype_LM_BERT/data
-02_NLP/03_Testing_LLM/data
-02_NLP/04_Prototype_LLM_Gemini/data
+02_NLP/00_Testing/01_Fasttext/data
+02_NLP/00_Testing/02_Gensim_Fasttext/data
+02_NLP/00_Testing/03_BERT/data
+02_NLP/00_Testing/04_SBERT/data
+02_NLP/00_Testing/05_BERT_Fasttext_comparison/data
+02_NLP/01_Prototype_LM/data
+02_NLP/02_Prototype_LLM/data
+02_NLP/04_Prototype_LLM_Gemini
