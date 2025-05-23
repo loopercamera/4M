@@ -16,3 +16,9 @@
 02_NLP/01_Testing/04_SBERT/data
 02_NLP/02_Prototype/data
 02_NLP/03_Prototype2_0/data
+
+#03_Named Entity Recognition
+03_NER/01_Training/
+03_NER/02_Model/
+03_NER/03_Label/
+03_NER/05_Map/

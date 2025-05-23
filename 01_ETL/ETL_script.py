@@ -124,28 +124,28 @@
 # # # # # # 4. Load
 # # # # # # -------------------------------
 
-from load_metadata import (
-    database_exists, reset_database,delete_from_csv_list,
-    create_database,
-    load_metadata
-)
+# from load_metadata import (
+#     database_exists, reset_database,delete_from_csv_list,
+#     create_database,
+#     load_metadata
+# )
 
 
 
-db_name = "4M"
-folder_path = r"01_ETL\11_group"
-config_path = r"01_ETL\21_load\db_config.json"
-sql_path = r"01_ETL\21_load\create_db_script.sql"
-csv_remove_paths = [
-    r"01_ETL\removeorder_metadata_opendata.swiss.csv",
-    r"01_ETL\removeorder_metadata_geocat.ch.csv"
-]
+# db_name = "4M"
+# folder_path = r"01_ETL\11_group"
+# config_path = r"01_ETL\21_load\db_config.json"
+# sql_path = r"01_ETL\21_load\create_db_script.sql"
+# csv_remove_paths = [
+#     r"01_ETL\removeorder_metadata_opendata.swiss.csv",
+#     r"01_ETL\removeorder_metadata_geocat.ch.csv"
+# ]
 
 
-if database_exists(db_name, config_path):
-    print(f"Database '{db_name}' exists.")
-else:
-    create_database(db_name, config_path,sql_path)
+# if database_exists(db_name, config_path):
+#     print(f"Database '{db_name}' exists.")
+# else:
+#     create_database(db_name, config_path,sql_path)
 
 # # # # # Delete metadata entries listed in CSV
 # # # # delete_from_csv_list(csv_remove_paths, db_name, config_path)
@@ -156,7 +156,7 @@ else:
 # reset_database(db_name, config_path,sql_path)
 
 # # # Load metadata (set overwrite_db to True or False)
-load_metadata(folder_path, config_path, db_name)
+# load_metadata(folder_path, config_path, db_name)
 
 
 # # # # # -------------------------------
@@ -165,22 +165,49 @@ load_metadata(folder_path, config_path, db_name)
 
 from language_detection import process_language_mapping
 
-process_language_mapping(
-    config_path = r"01_ETL\21_load\db_config.json",
-    dbname="4M",
-    table_name="merged_distribution_metadata",
-    language_col="distribution_language",
-    identifier_col="dataset_identifier",
-    columns_to_map=["distribution_title", "distribution_description"],
-    table_set_type="distribution"
+# process_language_mapping(
+#     config_path = r"01_ETL\21_load\db_config.json",
+#     dbname="4M",
+#     table_name="merged_distribution_metadata",
+#     language_col="distribution_language",
+#     identifier_col="dataset_identifier",
+#     columns_to_map=["distribution_title", "distribution_description"],
+#     table_set_type="distribution"
+# )
+
+# process_language_mapping(
+#     config_path = r"01_ETL\21_load\db_config.json",
+#     dbname="4M",
+#     table_name="merged_dataset_metadata",
+#     language_col="dataset_language",
+#     identifier_col="dataset_identifier",
+#     columns_to_map=["dataset_title", "dataset_keyword","dataset_description"],
+#     table_set_type="dataset"
+# )
+
+
+from language_correction import language_correction
+
+
+language_correction(
+    config_file = r"C:\\FHNW_lokal\\6000\\4M\\01_ETL\\21_load\\db_config.json",
+    dbname = "4M_copy",
+    table_name = "merged_dataset_metadata",
+    language_prefixes = ["DE", "EN", "FR", "IT"],
+    base_columns = ["dataset_title", "dataset_keyword", "dataset_description"],
+    table_set_type = "dataset",
+    min_length_lang_detect = 20
 )
 
-process_language_mapping(
-    config_path = r"01_ETL\21_load\db_config.json",
-    dbname="4M",
-    table_name="merged_dataset_metadata",
-    language_col="dataset_language",
-    identifier_col="dataset_identifier",
-    columns_to_map=["dataset_title", "dataset_keyword","dataset_description"],
-    table_set_type="dataset"
-)
+
+# language_correction(
+#     config_file = r"C:\\FHNW_lokal\\6000\\4M\\01_ETL\\21_load\\db_config.json",
+#     dbname = "4M_copy",
+#     table_name = "merged_distribution_metadata",
+#     language_prefixes = ["DE", "EN", "FR", "IT"],
+#     base_columns = ["distribution_title","distribution_description"],
+#     table_set_type = "distribution",
+#     min_length_lang_detect = 20
+# )
+
+

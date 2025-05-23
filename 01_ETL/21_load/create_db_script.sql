@@ -1,5 +1,7 @@
 -- Main dataset table
-CREATE TABLE merged_dataset_metadata (
+
+
+    CREATE TABLE merged_dataset_metadata (
     dataset_identifier TEXT PRIMARY KEY,
     origin TEXT,
     xml_filename TEXT,
@@ -35,9 +37,22 @@ CREATE TABLE merged_dataset_metadata (
     dataset_theme TEXT,
     dataset_issued TEXT,
 
-    dataset_is_mobility BOOLEAN
+    dataset_is_mobility BOOLEAN,
+    dataset_location TEXT,
+    dataset_location_district TEXT,
+    dataset_location_canton TEXT,
+    dataset_location_country TEXT
+
+    dataset_language_status_de TEXT,
+    dataset_language_status_en TEXT,
+    dataset_language_status_fr TEXT,
+    dataset_language_status_it TEXT,
+
+    dataset_language_quality TEXT
+
 
 );
+
 
 -- 1-to-1 contact point table (dataset_identifier is also PRIMARY KEY here)
 CREATE TABLE merged_contact_point_metadata (
@@ -82,6 +97,16 @@ CREATE TABLE merged_contact_point_metadata (
     distribution_license TEXT,
     distribution_rights TEXT,
     distribution_byte_size TEXT,
+
+    distribution_language_status_de TEXT,
+    distribution_language_status_en TEXT,
+    distribution_language_status_fr TEXT,
+    distribution_language_status_it TEXT,
+
+    distribution_language_quality TEXT
+
+
+
     FOREIGN KEY (dataset_identifier) REFERENCES merged_dataset_metadata(dataset_identifier) ON DELETE CASCADE
     );
 
