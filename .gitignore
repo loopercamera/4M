@@ -17,4 +17,6 @@
 02_NLP/00_Testing/05_BERT_Fasttext_comparison/data
 02_NLP/01_Prototype_LM/data
 02_NLP/02_Prototype_LLM/data
+02_NLP/03_Labelling_Mobilitydata_LLM
+02_NLP/04_Clustering/data
 02_NLP/04_Prototype_LLM_Gemini
