@@ -1,0 +1,3 @@
+Methode,Precision,Recall,F1-Score,False Negatives (Token)
+Regex,0.724,0.597,0.654,27
+spaCy Custom,0.72,0.605,0.658,25
