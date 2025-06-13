@@ -20,5 +20,12 @@
 02_NLP/03_Labelling_Mobilitydata_LLM/data
 02_NLP/04_Clustering/data
 
-#NER
+#03_NER
 03_NER/02_Model
+03_NER/06_Data_Visualisation/__pycache__
+03_NER/06_Data_Visualisation/data
+
+#07_Final_Workflow
+07_Final_Workflow/__pycache__
+07_Final_Workflow/data
+07_Final_Workflow/functions/__pycache__
