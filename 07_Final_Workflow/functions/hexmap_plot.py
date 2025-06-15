@@ -81,7 +81,7 @@ def plot_hex_map(daten: dict, titel: str = "", untertitel: str = ""):
     ax.set_ylim(y_min, y_max)
 
     ax.text((x_min + x_max) / 2, y_max - 2, titel,
-            ha='center', va='bottom', fontsize=16, weight='bold', zorder=3)
+            ha='center', va='bottom', fontsize=20, weight='bold', zorder=3)
     ax.text((x_min + x_max) / 2, y_max - 3, untertitel,
             ha='center', va='bottom', fontsize=14, zorder=3)
 

@@ -59,6 +59,17 @@ def determine_language_and_keywords(row):
             parsed = []
         if parsed:
             return pd.Series([lang, parsed])
+
+    for lang in languages:
+        title = row.get(f"dataset_title_{lang}", "")
+        if isinstance(title, str) and title.strip():
+            return pd.Series([lang, []])
+
+    for lang in languages:
+        description = row.get(f"dataset_description_{lang}", "")
+        if isinstance(description, str) and description.strip():
+            return pd.Series([lang, []])
+
     return pd.Series(["unknown", []])
 
 def resolve_region(row):
