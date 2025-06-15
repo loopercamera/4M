@@ -105,24 +105,92 @@ def execute_sql_script(db_name, sql_file_path, config_path):
         cur.close()
         conn.close()
 
+from psycopg2 import connect, sql
+from error_logger import log_error
+
 def load_csv_to_table(db_name, table_name, csv_path, config_path):
     config = load_config(config_path)
-    conn = connect(database=db_name, user=config["user"], password=config["password"],
-                   host=config["host"], port=config["port"])
+    conn = connect(
+        database=db_name,
+        user=config["user"],
+        password=config["password"],
+        host=config["host"],
+        port=config["port"]
+    )
     conn.autocommit = True
     cur = conn.cursor()
+
     try:
         with open(csv_path, 'r', encoding='utf-8') as f:
-            cur.copy_expert(
-                sql.SQL("COPY {} FROM STDIN WITH CSV HEADER").format(sql.Identifier(table_name)),
-                f
-            )
-        log_error(f"Successfully loaded CSV '{csv_path}' into the table '{db_name}'", "info")
+            if table_name == "merged_distribution_metadata":
+                # Spalten ohne 'distribution_identifier'
+                columns = [
+                    "dataset_identifier",
+                    "distribution_format",
+                    "distribution_access_url",
+                    "origin",
+                    "xml_filename",
+                    "distribution_title_de",
+                    "distribution_description_de",
+                    "distribution_title_unknown",
+                    "distribution_description_unknown",
+                    "distribution_title_en",
+                    "distribution_description_en",
+                    "distribution_title_fr",
+                    "distribution_description_fr",
+                    "distribution_title_it",
+                    "distribution_description_it",
+                    "distribution_title_rm",
+                    "distribution_description_rm",
+                    "distribution_media_type",
+                    "distribution_language",
+                    "distribution_download_url",
+                    "distribution_coverage",
+                    "distribution_temporal_resolution",
+                    "distribution_documentation",
+                    "distribution_id",
+                    "distribution_issued_date",
+                    "distribution_modified_date",
+                    "distribution_license",
+                    "distribution_rights",
+                    "distribution_byte_size",
+                    "distribution_language_status_de",
+                    "distribution_language_status_en",
+                    "distribution_language_status_fr",
+                    "distribution_language_status_it",
+                    "distribution_language_status_unknown",
+                    "distribution_language_quality",
+                    "distribution_description_length_de",
+                    "distribution_description_length_en",
+                    "distribution_description_length_fr",
+                    "distribution_description_length_it",
+                    "distribution_description_length_rm",
+                    "distribution_format_name",
+                    "distribution_format_type",
+                    "distribution_format_cluster",
+                    "distribution_format_geodata",
+                    "distribution_access_url_status_code",
+                    "distribution_download_url_status_code"
+                ]
+                col_sql = sql.SQL(', ').join(map(sql.Identifier, columns))
+                copy_stmt = sql.SQL("COPY {} ({}) FROM STDIN WITH CSV HEADER").format(
+                    sql.Identifier(table_name),
+                    col_sql
+                )
+            else:
+                copy_stmt = sql.SQL("COPY {} FROM STDIN WITH CSV HEADER").format(
+                    sql.Identifier(table_name)
+                )
+
+            cur.copy_expert(copy_stmt, f)
+            log_error(f"Successfully loaded CSV '{csv_path}' into the table '{table_name}'", "info")
+
     except Exception as e:
         log_error(f"Error loading CSV '{csv_path}' into table '{table_name}'", exception=e)
     finally:
         cur.close()
         conn.close()
+
 
 def load_metadata(folder_path, config_path,db_name = "4M"):
 

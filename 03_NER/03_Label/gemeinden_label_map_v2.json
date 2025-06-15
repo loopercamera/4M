@@ -1,5 +1,12 @@
 [
   {
+    "label": "Schweiz",
+    "label_id": "CH0000000000",
+    "level": 0,
+    "canton": null,
+    "district": null
+  },
+  {
     "label": "Österreich",
     "label_id": "AT0000000000",
     "level": 0,

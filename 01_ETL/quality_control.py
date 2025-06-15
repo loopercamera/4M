@@ -515,13 +515,13 @@ def set_quality_indicators(
     set_keyword_count(config_file, dbname, language_prefixes, limit)
     set_format_information(config_file, dbname, format_lockup, limit)
 
-    set_distribution_url_status_codes(
-    config_file,
-    dbname,
-    limit,
-    max_workers=30,
-    timeout=5
-)
+#     set_distribution_url_status_codes(
+#     config_file,
+#     dbname,
+#     limit,
+#     max_workers=30,
+#     timeout=5
+# )
 
 
 # --- Aufruf ---

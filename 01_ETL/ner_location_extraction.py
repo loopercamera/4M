@@ -229,17 +229,13 @@ def extract_label_matches(
 ) -> pd.DataFrame:
     results = []
 
+
     for _, row in df.iterrows():
         label_id = None
         match_field = None
         match_level = None
-
         for lang in language_prefixes:
             lang = lang.lower()
-            lang_upper = lang.upper()
-
-            if lang_upper not in row["dataset_language"]:
-                continue
 
             fields = [
                 f"dataset_title_{lang}",
@@ -247,6 +243,8 @@ def extract_label_matches(
                 "dataset_publisher_name",
                 "dataset_identifier"
             ]
+
+
 
             for field in fields:
                 if field not in row:
@@ -281,6 +279,7 @@ def add_location_columns(df: pd.DataFrame, label_map_path: str, fallback_label_i
     try:
         with open(label_map_path, "r", encoding="utf-8") as f:
             label_map_entries = json.load(f)
+        
 
         # --- Lookups ---
         label_id_to_label = {entry["label_id"]: entry["label"] for entry in label_map_entries}

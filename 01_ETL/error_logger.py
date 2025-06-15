@@ -5,9 +5,9 @@ import logging
 LOG_FILE = "01_ETL/ETL_logfile.log"
 
 # Clear the log file before each run
-if os.path.exists(LOG_FILE):
-    with open(LOG_FILE, "w") as file:
-        file.truncate(0)  # Clears the file content
+# if os.path.exists(LOG_FILE):
+#     with open(LOG_FILE, "w") as file:
+#         file.truncate(0)  # Clears the file content
 
 logging.basicConfig(
     filename=LOG_FILE,

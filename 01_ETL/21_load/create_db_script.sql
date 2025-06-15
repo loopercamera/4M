@@ -34,23 +34,36 @@
     dataset_publisher_name TEXT,
     dataset_publisher_URL TEXT,
 
+    dataset_spatial TEXT,
     dataset_theme TEXT,
     dataset_issued TEXT,
 
     dataset_is_mobility BOOLEAN,
+    dataset_location_id TEXT,
     dataset_location TEXT,
     dataset_location_district TEXT,
     dataset_location_canton TEXT,
-    dataset_location_country TEXT
+    dataset_location_country TEXT,
 
     dataset_language_status_de TEXT,
     dataset_language_status_en TEXT,
     dataset_language_status_fr TEXT,
     dataset_language_status_it TEXT,
+    dataset_language_status_unknown TEXT,
+    dataset_language_quality TEXT,
 
-    dataset_language_quality TEXT
-
-
+    dataset_description_length_de integer,
+    dataset_description_length_en integer,
+    dataset_description_length_fr integer,
+    dataset_description_length_it integer,
+    dataset_description_length_rm integer,
+    dataset_distribution_format_count integer,
+    dataset_keyword_count_de integer,
+    dataset_keyword_count_en integer,
+    dataset_keyword_count_fr integer,
+    dataset_keyword_count_it integer,
+    dataset_keyword_count_rm integer,
+    dataset_cluster_id integer
 );
 
 
@@ -84,7 +97,6 @@ CREATE TABLE merged_contact_point_metadata (
     distribution_description_IT TEXT,
     distribution_title_RM TEXT,
     distribution_description_RM TEXT,
-    distribution_identifier TEXT,
     distribution_media_type TEXT,
     distribution_language TEXT,
     distribution_download_url TEXT,
@@ -102,10 +114,22 @@ CREATE TABLE merged_contact_point_metadata (
     distribution_language_status_en TEXT,
     distribution_language_status_fr TEXT,
     distribution_language_status_it TEXT,
+    distribution_language_status_unknown TEXT,
+    distribution_language_quality TEXT,
 
-    distribution_language_quality TEXT
+    distribution_description_length_de TEXT,
+    distribution_description_length_en TEXT,
+    distribution_description_length_fr TEXT,
+    distribution_description_length_it TEXT,
+    distribution_description_length_rm TEXT,
 
-
+    distribution_format_name text,
+    distribution_format_type text,
+    distribution_format_cluster text,
+    distribution_format_geodata boolean,
+    distribution_access_url_status_code integer,
+    distribution_download_url_status_code integer,
+    distribution_identifier uuid DEFAULT gen_random_uuid() NOT NULL,
 
     FOREIGN KEY (dataset_identifier) REFERENCES merged_dataset_metadata(dataset_identifier) ON DELETE CASCADE
     );

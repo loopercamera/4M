@@ -37,9 +37,36 @@ DATASET_COLUMNS = [
     "dataset_publisher_name",
     "dataset_publisher_URL",
 
+    "dataset_spatial",
     "dataset_theme",
     "dataset_issued",
-    "dataset_is_mobility"
+
+    "dataset_is_mobility",
+    "dataset_location_id",
+    "dataset_location",
+    "dataset_location_district",
+    "dataset_location_canton",
+    "dataset_location_country",
+
+    "dataset_language_status_de",
+    "dataset_language_status_en",
+    "dataset_language_status_fr",
+    "dataset_language_status_it",
+    "dataset_language_status_unknown",
+    "dataset_language_quality",
+
+    "dataset_description_length_de",
+    "dataset_description_length_en",
+    "dataset_description_length_fr",
+    "dataset_description_length_it",
+    "dataset_description_length_rm",
+    "dataset_distribution_format_count",
+    "dataset_keyword_count_de",
+    "dataset_keyword_count_en",
+    "dataset_keyword_count_fr",
+    "dataset_keyword_count_it",
+    "dataset_keyword_count_rm",
+    "dataset_cluster_id"
 
 ]
 
@@ -61,7 +88,6 @@ DISTRIBUTION_COLUMNS = [
     "distribution_description_IT",
     "distribution_title_RM",
     "distribution_description_RM",
-    "distribution_identifier",
     "distribution_media_type",
     "distribution_language",
     "distribution_download_url",
@@ -73,7 +99,27 @@ DISTRIBUTION_COLUMNS = [
     "distribution_modified_date",
     "distribution_license",
     "distribution_rights",
-    "distribution_byte_size"
+    "distribution_byte_size",
+
+    "distribution_language_status_de",
+    "distribution_language_status_en",
+    "distribution_language_status_fr",
+    "distribution_language_status_it",
+    "distribution_language_status_unknown",
+    "distribution_language_quality",
+
+    "distribution_description_length_de",
+    "distribution_description_length_en",
+    "distribution_description_length_fr",
+    "distribution_description_length_it",
+    "distribution_description_length_rm",
+
+    "distribution_format_name",
+    "distribution_format_type",
+    "distribution_format_cluster",
+    "distribution_format_geodata",
+    "distribution_access_url_status_code",
+    "distribution_download_url_status_code",
 ]
 
 

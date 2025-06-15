@@ -156,7 +156,7 @@ def fetch_dataset_metadata(config_path, db_name, table, identifier, base_cols, p
     try:
         conn = psycopg2.connect(**config)
         cur = conn.cursor()
-        query = f"SELECT {', '.join(columns_to_load)} FROM {table}"
+        query = f"SELECT {', '.join(columns_to_load)} FROM {table};"
         cur.execute(query)
         colnames = [desc[0] for desc in cur.description]
         df = pd.DataFrame(cur.fetchall(), columns=colnames)
