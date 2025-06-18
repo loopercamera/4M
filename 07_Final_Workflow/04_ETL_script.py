@@ -4,7 +4,7 @@
 
 confing_file_path_db = r"07_Final_Workflow\data\db_config.json"
 sql_path_db = r"07_Final_Workflow\data\create_db_script.sql"
-db_name = "4M_test_finaler_workflow"
+db_name = "4M"
 
 
 # # -------------------------------
@@ -24,10 +24,10 @@ from functions import download_opendata_swiss
 opendata_swiss_base_dir = r"07_Final_Workflow\data\01_opendata.swiss"
 opendata_swiss_list_datasets_save_path = opendata_swiss_base_dir + r"\opendata_swiss_datasets.csv"
 open_data_swiss_data_folder = opendata_swiss_base_dir + r"\saved_metadata_xml"
-MAX_DATASETS = 10
+MAX_DATASETS = None
 
-# download_opendata_swiss.gather_opendata_swiss_datasets(opendata_swiss_list_datasets_save_path)
-# download_opendata_swiss.download_opendata_swiss_xml(opendata_swiss_list_datasets_save_path,open_data_swiss_data_folder,MAX_DATASETS)
+download_opendata_swiss.gather_opendata_swiss_datasets(opendata_swiss_list_datasets_save_path)
+download_opendata_swiss.download_opendata_swiss_xml(opendata_swiss_list_datasets_save_path,open_data_swiss_data_folder,MAX_DATASETS)
 
 
 # # # # 1.2 Clean metadata
@@ -64,22 +64,22 @@ geocat_data_folder = geocat_base_dir + r"\saved_metadata_xml"
 
 
 # 2.1 Download metadata
-# from functions.download_geocat import download_geocat_metadata
-# download_geocat_metadata(
-#     save_dir= geocat_base_dir,
-#     csv_file= "geocat_dataset_id_title.csv",
-#     log_file= "geocat_download_iteration.log",
-#     start_pos=1,
-#     batch_size=250
-# )
+from functions.download_geocat import download_geocat_metadata
+download_geocat_metadata(
+    save_dir= geocat_base_dir,
+    csv_file= "geocat_dataset_id_title.csv",
+    log_file= "geocat_download_iteration.log",
+    start_pos=1,
+    batch_size=250
+)
 
 # XML-Dateien einzeln aus der CSV herunterladen
-# from functions.download_geocat import download_xml_metadata_from_csv
-# download_xml_metadata_from_csv(
-#     save_dir= geocat_base_dir,
-#     csv_file="geocat_dataset_id_title.csv",
-#     max_files= 10  # oder None für alle
-# )
+from functions.download_geocat import download_xml_metadata_from_csv
+download_xml_metadata_from_csv(
+    save_dir= geocat_base_dir,
+    csv_file="geocat_dataset_id_title.csv",
+    max_files= None  # oder None für alle
+)
 
 
 

@@ -3,7 +3,7 @@
 # -------------------------------
 
 confing_file_path_db = r"07_Final_Workflow\data\db_config.json"
-db_name = "4M_test_finaler_workflow"
+db_name = "4M"
 
 
 # -------------------------------
