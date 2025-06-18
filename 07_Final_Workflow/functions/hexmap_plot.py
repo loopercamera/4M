@@ -1,6 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 from matplotlib.patches import RegularPolygon
+from matplotlib.ticker import FormatStrFormatter, MultipleLocator
 import numpy as np
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
@@ -89,7 +90,9 @@ def plot_hex_map(daten: dict, titel: str = "", untertitel: str = ""):
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.03, pad=-0.1)
     cbar.set_label("Anzahl Datensätze", fontsize=14)
+    cbar.ax.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
     cbar.ax.tick_params(labelsize=12)
+    cbar.ax.yaxis.set_major_locator(MultipleLocator(5))
 
     ax.set_ylim(y_min, y_max - 1)
 
