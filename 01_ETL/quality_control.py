@@ -6,7 +6,7 @@ from tqdm import tqdm
 from error_logger import log_error
 import json
 
-# --- Konfiguration laden ---
+# --- load config ---
 def load_config(config_path):
     try:
         with open(config_path, "r", encoding="utf-8") as f:
@@ -15,7 +15,7 @@ def load_config(config_path):
         log_error(f"Failed to load configuration file: {e}", level="error")
         return None
 
-# --- Daten für Format-Zuordnung laden ---
+# --- Load data for format mapping ---
 def fetch_data_qc(config, limit=100):
     try:
         conn = psycopg2.connect(**config)
@@ -57,7 +57,7 @@ def fetch_data_qc(config, limit=100):
         log_error(f"Error loading dataset metadata with distribution formats: {e}", level="error")
         return pd.DataFrame()
 
-# --- Beschreibungslängen setzen ---
+# --- Set description lengths ---
 def set_description_length(config_file, dbname, language_prefixes, table_set_types, limit=None):
     config = load_config(config_file)
     if config is None:
@@ -137,7 +137,7 @@ def set_description_length(config_file, dbname, language_prefixes, table_set_typ
     except Exception as e:
         log_error(f"Database error in set_description_length: {e}", level="error")
 
-# --- Keyword-Zähler setzen ---
+# --- Set keyword counter ---
 def set_keyword_count(config_file, dbname, language_prefixes, limit=None):
     config = load_config(config_file)
     if config is None:
@@ -167,7 +167,7 @@ def set_keyword_count(config_file, dbname, language_prefixes, limit=None):
                 DO $$
                 BEGIN
                     IF NOT EXISTS (
-                        SELECT 1 FROM information_schema.columns 
+                        SELECT 1 FROM information_schema.columns
                         WHERE table_name='{table_name}' AND column_name='{target_col}'
                     ) THEN
                         ALTER TABLE {table_name}
@@ -216,7 +216,7 @@ def set_keyword_count(config_file, dbname, language_prefixes, limit=None):
     except Exception as e:
         log_error(f"Database error in set_keyword_count: {e}", level="error")
 
-# --- Formatinformationen setzen ---
+# --- Set format information ---
 import pandas as pd
 import psycopg2
 from error_logger import log_error
@@ -279,7 +279,6 @@ def update_distribution_format_data(df_with_counts, db_config):
                     WHERE distribution_identifier = %s
                 """
 
-                # NaN in None konvertieren
                 params = tuple(None if pd.isna(p) else p for p in (
                     row["format_name"],
                     row["format_type"],
@@ -418,7 +417,6 @@ def update_status_codes_in_db(df, db_config):
             access_status = row["access_url_status_code"]
             download_status = row["download_url_status_code"]
 
-            # NaN durch 0 ersetzen und sicherstellen, dass Integer übergeben wird
             access_status = 0 if pd.isna(access_status) else int(access_status)
             download_status = 0 if pd.isna(download_status) else int(download_status)
 
@@ -461,7 +459,6 @@ def set_distribution_url_status_codes(config_path, dbname, limit, max_workers=30
         print("No data to check.")
         return
 
-    # Alle eindeutigen URLs extrahieren
     all_urls = pd.concat([
         df["distribution_access_url"].dropna().astype(str).str.strip(),
         df["distribution_download_url"].dropna().astype(str).str.strip()
@@ -496,11 +493,11 @@ def set_distribution_url_status_codes(config_path, dbname, limit, max_workers=30
 
 # --- Hauptfunktion ---
 def set_quality_indicators(
-    config_file=r"C:\FHNW_lokal\6000\4M\01_ETL\21_load\db_config.json",
-    dbname="4M_copy",
+    config_file=r"01_ETL\21_load\db_config.json",
+    dbname="4M",
     language_prefixes=["DE", "EN", "FR", "IT"],
     table_set_types=["dataset", "distribution"],
-    format_lockup=r"C:\FHNW_lokal\6000\4M\04_QC\formats_lockup.csv",
+    format_lockup=r"04_QC\formats_lockup.csv",
     limit=None
 ):
     
@@ -515,13 +512,13 @@ def set_quality_indicators(
     set_keyword_count(config_file, dbname, language_prefixes, limit)
     set_format_information(config_file, dbname, format_lockup, limit)
 
-#     set_distribution_url_status_codes(
-#     config_file,
-#     dbname,
-#     limit,
-#     max_workers=30,
-#     timeout=5
-# )
+    set_distribution_url_status_codes(
+    config_file,
+    dbname,
+    limit,
+    max_workers=30,
+    timeout=5
+)
 
 
 # --- Aufruf ---
