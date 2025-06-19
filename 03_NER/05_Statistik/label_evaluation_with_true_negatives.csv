@@ -1,3 +1,3 @@
 Methode,Precision,Recall,F1-Score,Accuracy
-Gazetteer,0.977,0.702,0.817,0.747
-Spacy: 10 Epochen,0.989,0.719,0.833,0.767
+Gazetteer,0.947,0.597,0.732,0.653
+spaCy: 10 Epochen,0.96,0.605,0.742,0.667
