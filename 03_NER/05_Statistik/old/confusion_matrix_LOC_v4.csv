@@ -1,5 +1,0 @@
-Metric,Regex,spaCy Custom
-TP,107,102
-FN,12,17
-FP,0,0
-TN,31,31

@@ -1,5 +1,0 @@
-Model,Precision,Recall,F1-Score,Accuracy
-ner_model_after_epoch_1,0.695,0.703,0.688,0.982
-ner_model_after_epoch_4,0.7,0.692,0.688,0.984
-ner_model_after_epoch_6,0.697,0.699,0.688,0.982
-ner_model_after_epoch_10,0.714,0.696,0.697,0.984

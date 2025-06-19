@@ -1,0 +1,53 @@
+# Core data handling
+pandas
+numpy
+scipy
+tqdm
+requests
+
+# Database connection
+psycopg2-binary
+
+# NLP and ML
+nltk
+spacy
+spacy-transformers
+torch
+transformers
+sentence-transformers
+fasttext
+gensim
+langdetect
+langid
+fuzzywuzzy
+python-Levenshtein
+rank_bm25
+
+# Clustering and dimensionality reduction
+scikit-learn
+umap-learn
+kneed
+pyclustering
+
+# XML and RDF parsing
+lxml
+xmltodict
+
+# Logging and utilities
+loguru
+tabulate
+
+# Plotting and visualization
+matplotlib
+seaborn
+pyLDAvis
+
+# Excel support
+openpyxl
+
+# Notebook environment (optional)
+jupyter
+ipywidgets
+
+# Optional: Google Generative AI
+google-generativeai

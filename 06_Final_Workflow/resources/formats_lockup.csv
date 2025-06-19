@@ -1,0 +1,108 @@
+original_name,format_name,format_type,format_cluster,geodata_format
+- Andere -,other,no_information,no_information,f
+application/vnd.ogc.wms_xml,WMS,SERVICE,SERVICE,f
+ATOM Syndication Format,ATOM,LD,no_information,f
+CHTOPO:specialised-geoportal,other,no_information,META,t
+Download Bereich des Geodatenportals,other,no_information,META,t
+ESRI:REST,REST,SERVICE,SERVICE,f
+http://publications.europa.eu/resource/authority/file-type/7Z,7Z,FILE,ARCHIVE,f
+http://publications.europa.eu/resource/authority/file-type/CSV,CSV,FILE,TABLE,f
+http://publications.europa.eu/resource/authority/file-type/DXF,DXF,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/GDB,GDB,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/GEOJSON,GEOJSON,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/GEOTIFF,GEOTIFF,FILE,RASTER,t
+http://publications.europa.eu/resource/authority/file-type/GPKG,GPKG,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/GPX,GPX,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/HTML,HTML,ONLINE,DOCUMENT,f
+http://publications.europa.eu/resource/authority/file-type/JSON,JSON,FILE,VECTOR,f
+http://publications.europa.eu/resource/authority/file-type/JSON_LD,JSON_LD,LD,LINKED_DATA,f
+http://publications.europa.eu/resource/authority/file-type/KML,KML,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/KMZ,KMZ,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/N3,N3,LD,LINKED_DATA,f
+http://publications.europa.eu/resource/authority/file-type/OCTET,OCTET,FILE,SPECIAL,f
+http://publications.europa.eu/resource/authority/file-type/ODS,ODS,FILE,TABLE,f
+http://publications.europa.eu/resource/authority/file-type/PARQUET,PARQUET,FILE,TABLE,f
+http://publications.europa.eu/resource/authority/file-type/PDF,PDF,FILE,DOCUMENT,f
+http://publications.europa.eu/resource/authority/file-type/PNG,PNG,FILE,RASTER,f
+http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE,RDF_TURTLE,LD,LINKED_DATA,f
+http://publications.europa.eu/resource/authority/file-type/RDF_XML,RDF_XML,LD,LINKED_DATA,f
+http://publications.europa.eu/resource/authority/file-type/REST,REST,SERVICE,SERVICE,f
+http://publications.europa.eu/resource/authority/file-type/SHP,SHP,FILE,VECTOR,t
+http://publications.europa.eu/resource/authority/file-type/SPARQLQ,SPARQLQ,SERVICE,LINKED_DATA,f
+http://publications.europa.eu/resource/authority/file-type/TIFF,TIFF,FILE,RASTER,f
+http://publications.europa.eu/resource/authority/file-type/TXT,TXT,FILE,TABLE,f
+http://publications.europa.eu/resource/authority/file-type/WFS_SRVC,WFS,SERVICE,SERVICE,t
+http://publications.europa.eu/resource/authority/file-type/WMS_SRVC,WMS,SERVICE,SERVICE,t
+http://publications.europa.eu/resource/authority/file-type/WMTS_SRVC,WMTS,SERVICE,SERVICE,t
+http://publications.europa.eu/resource/authority/file-type/XLS,XLS,FILE,TABLE,f
+http://publications.europa.eu/resource/authority/file-type/XML,XML,FILE,VECTOR,f
+http://publications.europa.eu/resource/authority/file-type/YAML,YAML,FILE,LINKED_DATA,f
+http://publications.europa.eu/resource/authority/file-type/ZIP,ZIP,FILE,ARCHIVE,f
+https,HTTPS,ONLINE,TRANSFER,f
+https://www.sl-fp.ch/it/fondazione-svizzera-per-la-tutela-del-paesaggio/documentazione/die-tranquillity-map-140.html,HTML,ONLINE,DOCUMENT,f
+Linked:data,data,LD,META,f
+LINKED:DATA:RDF,RDF,LD,LINKED_DATA,f
+MAP:Preview,MAP:Preview,ONLINE,SERVICE,t
+OGC:service WMS,WMS,SERVICE,SERVICE,t
+OGC:WCS,WCS,SERVICE,SERVICE,t
+OGC:WCS-http-get-capabilities,WCS,SERVICE,SERVICE,t
+OGC Web Map Service,WMS,SERVICE,SERVICE,t
+OGC:WFS,WFS,SERVICE,SERVICE,t
+OGC:WFS-http-get-capabilities,WFS,SERVICE,SERVICE,t
+OGC:WMC,WMC,SERVICE,SERVICE,t
+OGC:WMS,WMS,SERVICE,SERVICE,t
+OGC:WMS-1.1.1-http-get-map,WMS,SERVICE,SERVICE,t
+OGC:WMS-http-get-capabilities,WMS,SERVICE,SERVICE,t
+OGC:WMTS,WMTS,SERVICE,SERVICE,t
+OGC:WMTS-http-get-capabilities,WMTS,SERVICE,SERVICE,t
+OPENDATA:SWISS,other,other,META,f
+"ÖREB: Nutzungsplanung kommunal, Altendorf, objektbezogene Festlegungen",other,other,no_information,f
+UKST,other,other,no_information,f
+WWW:DOWNLOAD,DOWNLOAD,ONLINE,TRANSFER,f
+WWW:DOWNLOAD-1.0-ftp--download,FTP,ONLINE,TRANSFER,f
+WWW:DOWNLOAD-1.0-http--download,HTTP,ONLINE,TRANSFER,f
+WWW:DOWNLOAD:ADDITIONAL-FILES,FILES,FILE,META,f
+WWW:DOWNLOAD-APP,APP,ONLINE,TRANSFER,f
+WWW:DOWNLOAD:AutoCAD DXF (DXF),DXF,FILE,VECTOR,t
+WWW:DOWNLOAD:CSV,CSV,FILE,TABLE,f
+WWW:DOWNLOAD:DXF,DXF,FILE,VECTOR,t
+WWW:DOWNLOAD:ESRI File Geodatabase FileGDB (GDB),GDB,FILE,VECTOR,t
+WWW:DOWNLOAD:ESRI_geodatabase,GDB,FILE,VECTOR,t
+WWW:DOWNLOAD:ESRI Shapefile,SHP,FILE,VECTOR,t
+WWW:DOWNLOAD:ESRI Shapefile (SHP),SHP,FILE,VECTOR,t
+WWW:DOWNLOAD:GeoJSON,GEOJSON,FILE,VECTOR,t
+WWW:DOWNLOAD:GeoJSON (GEOJSON),GEOJSON,FILE,VECTOR,t
+WWW:DOWNLOAD:Geopackage (ogc),GPKG,FILE,VECTOR,t
+WWW:DOWNLOAD:GeoTIFF,GEOTIFF,FILE,RASTER,t
+WWW:DOWNLOAD:GEOTIFF,GEOTIFF,FILE,RASTER,t
+WWW:DOWNLOAD:GeoTIFF (GEOTIFF),GEOTIFF,FILE,RASTER,t
+WWW:DOWNLOAD:Google KMZ (KMZ),KMZ,FILE,VECTOR,t
+WWW:DOWNLOAD:GPKG,GPKG,FILE,VECTOR,t
+WWW:DOWNLOAD:GTFS,GTFS,FILE,SPECIAL,f
+WWW:DOWNLOAD:INTERLIS,INTERLIS,FILE,VECTOR,t
+WWW:DOWNLOAD:INTERLIS 1 (ITF),ITF,FILE,VECTOR,t
+WWW:DOWNLOAD:INTERLIS 2 (XTF),XTF,FILE,VECTOR,t
+WWW:DOWNLOAD:INTERLIS-CH,INTERLIS,FILE,VECTOR,t
+WWW:DOWNLOAD:JSON,JSON,FILE,VECTOR,f
+WWW:DOWNLOAD:JSON (JSON),JSON,FILE,VECTOR,f
+WWW:DOWNLOAD:LAS,LAS,FILE,SPECIAL,t
+WWW:DOWNLOAD:Microsoft Excel (XLS),XLS,FILE,TABLE,f
+WWW:DOWNLOAD:MS Excel,XLS,FILE,TABLE,f
+WWW:DOWNLOAD:OGC Geopackage (GPKG),GPKG,FILE,VECTOR,t
+WWW:DOWNLOAD:PDF,PDF,FILE,DOCUMENT,f
+WWW:DOWNLOAD:PNG,PNG,FILE,RASTER,f
+WWW:DOWNLOAD:SHP,SHP,FILE,VECTOR,t
+WWW:DOWNLOAD:Tagged Image File Format (TIFF),TIFF,FILE,RASTER,f
+WWW:DOWNLOAD:Tagged Image File Format (TIFF) Compressed LZW,TIFFLZW,FILE,RASTER,f
+"WWW:DOWNLOAD:TEXT, comma separated (CSV)",CSV,FILE,TABLE,f
+"WWW:DOWNLOAD:Text (.csv), semicolon sepatated",CSV,FILE,TABLE,f
+"WWW:DOWNLOAD:TEXT, semicolon separated (CSV)",CSV,FILE,TABLE,f
+WWW:DOWNLOAD:TIFF,TIFF,FILE,RASTER,f
+WWW:DOWNLOAD-URL,URL,ONLINE,TRANSFER,f
+WWW:DOWNLOAD:ZIP,ZIP,FILE,ARCHIVE,f
+WWW:LEGEND,LEGEND,ONLINE,META,f
+WWW:LINK,LINK,ONLINE,TRANSFER,f
+WWW:LINK-1.0-http--download,DOWNLOAD,ONLINE,TRANSFER,f
+WWW:LINK-1.0-http--link,LINK,ONLINE,TRANSFER,f
+WWW:LINK-1.0-http--partners,HTML,ONLINE,DOCUMENT,f
+WWW:LINK-1.0-http--related,HTML,ONLINE,DOCUMENT,f
