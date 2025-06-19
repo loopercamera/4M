@@ -8,17 +8,17 @@
 01_ETL/21_load/db_config.json
 01_ETL/21_load/db_config_lokal.json
 
-#02_NLP
-02_NLP/00_bin
-02_NLP/00_Testing/01_Fasttext/data
-02_NLP/00_Testing/02_Gensim_Fasttext/data
-02_NLP/00_Testing/03_BERT/data
-02_NLP/00_Testing/04_SBERT/data
-02_NLP/00_Testing/05_BERT_Fasttext_comparison/data
-02_NLP/01_Prototype_LM/data
-02_NLP/02_Prototype_LLM/data
-02_NLP/03_Labelling_Mobilitydata_LLM/data
-02_NLP/04_Clustering/data
+#02_Categorization
+02_Categorization/00_bin
+02_Categorization/00_Testing/01_Fasttext/data
+02_Categorization/00_Testing/02_Gensim_Fasttext/data
+02_Categorization/00_Testing/03_BERT/data
+02_Categorization/00_Testing/04_SBERT/data
+02_Categorization/00_Testing/05_BERT_Fasttext_comparison/data
+02_Categorization/01_Prototype_LM/data
+02_Categorization/02_Prototype_LLM/data
+02_Categorization/03_Labelling_Mobilitydata_LLM/data
+02_Categorization/04_Clustering/data
 
 #03_NER
 03_NER/02_Model
