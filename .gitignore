@@ -5,8 +5,7 @@
 01_ETL/11_group/
 01_ETL/ETL_logfile.log
 01_ETL/portal_statistics.csv
-01_ETL/21_load/db_config.json
-01_ETL/21_load/db_config_lokal.json
+
 
 #02_Categorization
 02_Categorization/00_bin
@@ -25,7 +24,7 @@
 03_NER/06_Data_Visualisation/__pycache__
 03_NER/06_Data_Visualisation/data
 
-#07_Final_Workflow
-07_Final_Workflow/__pycache__
-07_Final_Workflow/data
-07_Final_Workflow/functions/__pycache__
+#06_Final_Workflow
+06_Final_Workflow/__pycache__
+06_Final_Workflow/data
+06_Final_Workflow/functions/__pycache__

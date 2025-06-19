@@ -1,5 +1,5 @@
 {
-  "host": "v001457.edu.ds.fhnw.ch",
+  "host": "hostname",
   "port": 5432,
   "user": "bth_4m",
   "password": "bth_4m"
